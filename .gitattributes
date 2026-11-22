@@ -1,0 +1,19 @@
+# 换行与编码约定：保证 Windows 上 clone 下来 .bat 仍是 CRLF，可直接双击
+* text=auto
+
+# 批处理必须 CRLF，否则 cmd 可能把整段当成一行
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# PowerShell 脚本保持 CRLF（内容本身已带 UTF-8 BOM，git 不会动 BOM）
+*.ps1 text eol=crlf
+
+# 前端与数据文件用 LF 更稳
+*.html text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.css text eol=lf
+
+# 第三方压缩库按二进制处理，避免 diff/换行处理破坏内容
+*.min.js -text
+assets/*.js -text

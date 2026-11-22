@@ -1,0 +1,8 @@
+# 本机的题库路径配置（含私人路径，不提交）
+config.json
+
+# 索引产物，随时可由 build-index.ps1 / 启动题库.bat 重建
+questions.json
+
+# 早期 Python 版留档，与当前 PowerShell 版无关
+旧版-python（已停用）/

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>试卷题库</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$', '$']], displayMath: [['$$', '$$']], processEscapes: true },
+  svg: { fontCache: 'global', scale: 1.05 },
+  options: { skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'code', 'pre'] },
+  startup: { typeset: false }
+};
+</script>
+<script src="assets/tex-svg.js" id="MathJax-script"></script>
+<script src="assets/marked.min.js"></script>
+<style>
+/* 青瓷（默认）：浅青绿，接近龙泉窑釉色 */
+:root{
+  --bg:#eef2ee; --glow:#dfeae1; --panel:#f7faf7; --panel2:#eef4ef;
+  --head-a:rgba(250,252,250,.97); --head-b:rgba(239,245,240,.97);
+  --line:#c9d8cd; --line-2:#c2d2c6; --line-soft:rgba(201,216,205,.6);
+  --input-bg:#ffffff; --hover-bg:#e3ece6;
+  --txt:#22312b; --txt-2:#2c3b34; --txt-3:#3d4f46; --txt-4:#455a4f; --txt-5:#4d6055;
+  --txt-6:#50655a; --txt-7:#243830; --txt-8:#31423a; --txt-strong:#16261f;
+  --dim:#5c7368; --dim2:#74897d; --dim3:#8b9d92;
+  --accent:#2f8a72; --accent-ink:#25735e; --accent-ink-2:#2b7f69; --accent-txt:#123f34; --accent-txt-2:#1e6653;
+  --accent-soft:rgba(47,138,114,.12); --accent-soft-2:rgba(47,138,114,.10); --accent-soft-3:rgba(47,138,114,.09);
+  --accent-line:rgba(47,138,114,.30); --accent-line-2:rgba(47,138,114,.26); --accent-line-3:rgba(47,138,114,.36);
+  --accent-line-4:rgba(47,138,114,.32); --accent-line-strong:rgba(47,138,114,.45); --wl-line:rgba(47,138,114,.30);
+  --card-bg:linear-gradient(180deg,#ffffff,#f8fbf8); --card-hover-line:#a9c3b3;
+  --shadow-1:rgba(31,58,46,.10); --shadow-2:rgba(31,58,46,.18);
+  --btn-bg:#ffffff; --btn-txt:#43584c;
+  --ans-bg:#ffffff; --ans-line:#c2d6c9; --ans-head:linear-gradient(180deg,#ecf5ef,#e4efe7); --ans-top-line:#cfdfd4;
+  --mark-bg:rgba(226,160,52,.22); --mark-txt:#7d5310;
+  --star:#a9bdb1; --star-on:#d89b2c; --star-glow:rgba(216,155,44,.30);
+  --badge-g-bg:rgba(124,92,255,.10); --badge-g-line:rgba(124,92,255,.28); --badge-g-txt:#6646c9;
+  --badge-s-bg:rgba(34,160,94,.10); --badge-s-line:rgba(34,160,94,.26); --badge-s-txt:#1c7546;
+  --badge-w-bg:rgba(198,140,24,.12); --badge-w-line:rgba(198,140,24,.30); --badge-w-txt:#7f5510;
+  --logo-a:#3ba17f; --logo-b:#1d6a53; --logo-glow:rgba(47,138,114,.30);
+  --scroll:#c1d3c7;
+  --more-bg:#ffffff; --more-line:#bcd2c4; --more-txt:#216853;
+  --chip-bg:#ffffff; --chip-txt:#43584c; --chip-hover-txt:#16261f; --chip-line-hover:#8fb3a0;
+  --kptag-bg:#eff5f0; --kptag-txt:#4b6b5c; --kp-sj-txt:#4e6f60;
+  --ok:#2f8a52; --warn:#b98218; --danger:#c2452f;
+}
+/* 纸墨：米纸底 + 墨字 + 朱砂点缀 */
+body[data-theme="paper"]{
+  --bg:#f5efe3; --glow:#ece0c9; --panel:#faf7ee; --panel2:#f3ead9;
+  --head-a:rgba(251,247,238,.97); --head-b:rgba(242,233,217,.97);
+  --line:#ddd0b9; --line-2:#d5c7ae; --line-soft:rgba(221,208,185,.6);
+  --input-bg:#fffdf7; --hover-bg:#efe6d4;
+  --txt:#332c22; --txt-2:#3b332a; --txt-3:#4a4136; --txt-4:#544a3d; --txt-5:#5b5043;
+  --txt-6:#5f5447; --txt-7:#372e25; --txt-8:#453b30; --txt-strong:#201a13;
+  --dim:#6d6152; --dim2:#857764; --dim3:#9a8b76;
+  --accent:#a8462f; --accent-ink:#983d27; --accent-ink-2:#a8462f; --accent-txt:#5a2013; --accent-txt-2:#843322;
+  --accent-soft:rgba(168,70,47,.10); --accent-soft-2:rgba(168,70,47,.08); --accent-soft-3:rgba(168,70,47,.07);
+  --accent-line:rgba(168,70,47,.28); --accent-line-2:rgba(168,70,47,.24); --accent-line-3:rgba(168,70,47,.34);
+  --accent-line-4:rgba(168,70,47,.30); --accent-line-strong:rgba(168,70,47,.42); --wl-line:rgba(168,70,47,.28);
+  --card-bg:linear-gradient(180deg,#fdfaf2,#f8f1e2); --card-hover-line:#c8b18e;
+  --shadow-1:rgba(64,48,30,.10); --shadow-2:rgba(64,48,30,.18);
+  --btn-bg:#fdfaf2; --btn-txt:#4a4136;
+  --ans-bg:#fdfaf2; --ans-line:#d8c9b1; --ans-head:linear-gradient(180deg,#f6efdf,#efe6d3); --ans-top-line:#ded0b8;
+  --mark-bg:rgba(168,70,47,.13); --mark-txt:#792919;
+  --star:#b2a288; --star-on:#c2851f; --star-glow:rgba(194,133,31,.28);
+  --badge-g-bg:rgba(63,94,160,.10); --badge-g-line:rgba(63,94,160,.28); --badge-g-txt:#33508f;
+  --badge-s-bg:rgba(46,120,74,.10); --badge-s-line:rgba(46,120,74,.26); --badge-s-txt:#27613c;
+  --badge-w-bg:rgba(178,120,26,.12); --badge-w-line:rgba(178,120,26,.30); --badge-w-txt:#7b5410;
+  --logo-a:#b55436; --logo-b:#7d2f1c; --logo-glow:rgba(168,70,47,.28);
+  --scroll:#d3c4ab;
+  --more-bg:#fdfaf2; --more-line:#cfbda0; --more-txt:#843322;
+  --chip-bg:#fdfaf2; --chip-txt:#4a4136; --chip-hover-txt:#201a13; --chip-line-hover:#c3ab86;
+  --kptag-bg:#f8f1e1; --kptag-txt:#6b5a45; --kp-sj-txt:#7a6a55;
+  --ok:#2f7d45; --warn:#b07d18; --danger:#b23a25;
+}
+/* 纯白：中性白底，蓝色强调 */
+body[data-theme="white"]{
+  --bg:#ffffff; --glow:#f1f5fa; --panel:#ffffff; --panel2:#f7f9fc;
+  --head-a:rgba(255,255,255,.98); --head-b:rgba(246,248,252,.98);
+  --line:#e3e8ef; --line-2:#dce2ea; --line-soft:rgba(227,232,239,.7);
+  --input-bg:#ffffff; --hover-bg:#f2f5fa;
+  --txt:#16202c; --txt-2:#202a37; --txt-3:#2c3745; --txt-4:#333f4e; --txt-5:#394554;
+  --txt-6:#3d4956; --txt-7:#1b2531; --txt-8:#26313d; --txt-strong:#0c151f;
+  --dim:#5a6879; --dim2:#77869a; --dim3:#8d9aab;
+  --accent:#1d7ad9; --accent-ink:#1a6cc4; --accent-ink-2:#1d7ad9; --accent-txt:#0a3a6b; --accent-txt-2:#155ea8;
+  --accent-soft:rgba(29,122,217,.09); --accent-soft-2:rgba(29,122,217,.07); --accent-soft-3:rgba(29,122,217,.06);
+  --accent-line:rgba(29,122,217,.26); --accent-line-2:rgba(29,122,217,.22); --accent-line-3:rgba(29,122,217,.32);
+  --accent-line-4:rgba(29,122,217,.28); --accent-line-strong:rgba(29,122,217,.40); --wl-line:rgba(29,122,217,.28);
+  --card-bg:linear-gradient(180deg,#ffffff,#fbfcfe); --card-hover-line:#c7d5e6;
+  --shadow-1:rgba(23,43,77,.07); --shadow-2:rgba(23,43,77,.14);
+  --btn-bg:#ffffff; --btn-txt:#2c3745;
+  --ans-bg:#fbfcfe; --ans-line:#dde5ef; --ans-head:linear-gradient(180deg,#f4f8fd,#eff4fb); --ans-top-line:#e3ebf5;
+  --mark-bg:rgba(250,204,21,.26); --mark-txt:#79570a;
+  --star:#b3bfcd; --star-on:#dfa52a; --star-glow:rgba(223,165,42,.26);
+  --badge-g-bg:rgba(109,74,214,.10); --badge-g-line:rgba(109,74,214,.26); --badge-g-txt:#5b39c1;
+  --badge-s-bg:rgba(26,150,88,.10); --badge-s-line:rgba(26,150,88,.24); --badge-s-txt:#15764a;
+  --badge-w-bg:rgba(190,132,20,.12); --badge-w-line:rgba(190,132,20,.28); --badge-w-txt:#7a520c;
+  --logo-a:#3aa0f0; --logo-b:#1d5fd0; --logo-glow:rgba(29,122,217,.24);
+  --scroll:#e0e6ed;
+  --more-bg:#ffffff; --more-line:#cfdae8; --more-txt:#155ea8;
+  --chip-bg:#ffffff; --chip-txt:#2c3745; --chip-hover-txt:#0c151f; --chip-line-hover:#b9cbe0;
+  --kptag-bg:#f4f7fb; --kptag-txt:#47596e; --kp-sj-txt:#5a6d84;
+  --ok:#1f8f4d; --warn:#b4820f; --danger:#cf3a2a;
+}
+/* 色彩方案切换 */
+.theme{position:relative;flex:0 0 auto}
+.theme-btn{display:flex;align-items:center;gap:7px;height:32px;padding:0 10px;border-radius:9px;
+  border:1px solid var(--line);background:var(--input-bg);color:var(--txt-3);font-size:12px;cursor:pointer}
+.theme-btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.theme-btn .sw{width:13px;height:13px;border-radius:50%;border:1px solid var(--line)}
+.theme-btn .cv{color:var(--dim2);font-size:9px}
+.theme-menu{position:absolute;right:0;top:40px;z-index:30;min-width:148px;padding:6px;border-radius:11px;
+  border:1px solid var(--line);background:var(--panel2);box-shadow:0 12px 30px var(--shadow-1);display:none}
+.theme-menu.open{display:block}
+.theme-item{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:8px;cursor:pointer;
+  font-size:12.5px;color:var(--txt-3);border:1px solid transparent}
+.theme-item:hover{background:var(--hover-bg)}
+.theme-item.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-txt)}
+.theme-item .dot{width:14px;height:14px;border-radius:50%;border:1px solid var(--line);flex:0 0 auto}
+.theme-item .nm{flex:1}
+.theme-item .ck{color:var(--accent);font-size:11px}
+/* 左栏收起：收起后中栏与右栏平分，右栏（题目预览）优先变宽 */
+.leftbtn{flex:0 0 auto;width:32px;height:32px;border-radius:9px;border:1px solid var(--line);
+  background:var(--input-bg);color:var(--txt-3);cursor:pointer;font-size:15px;line-height:1;padding:0}
+.leftbtn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.leftbtn.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-txt)}
+body.hide-left aside{width:0;min-width:0;padding:0;border:0;overflow:hidden;visibility:hidden}
+body.hide-left main{grid-template-columns:0 minmax(0,1fr) clamp(560px,58vw,1400px)}
+@media (max-width:1180px){body.hide-left main{grid-template-columns:0 minmax(0,1fr)}}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:radial-gradient(1200px 600px at 15% -10%, var(--glow) 0%, transparent 60%), var(--bg);
+  color:var(--txt); font:14px/1.6 "Microsoft YaHei UI","Segoe UI",system-ui,sans-serif;
+  display:flex; flex-direction:column; overflow:hidden;
+}
+header{
+  height:64px; flex:0 0 64px; display:flex; align-items:center; gap:16px;
+  padding:0 18px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg, var(--head-a), var(--head-b));
+  z-index:5;
+}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;letter-spacing:.5px}
+.logo{width:26px;height:26px;border-radius:7px;background:linear-gradient(135deg,var(--logo-a),var(--logo-b));
+  display:grid;place-items:center;font-size:13px;color:#fff;font-weight:800;box-shadow:0 0 16px var(--logo-glow)}
+.stats{display:flex;gap:14px;color:var(--dim);font-size:12px}
+.stats b{color:var(--txt);font-weight:600}
+.search{margin-left:auto;position:relative;width:min(420px,38vw)}
+.search input{
+  width:100%;height:38px;border-radius:10px;border:1px solid var(--line);
+  background:var(--input-bg);color:var(--txt);padding:0 38px 0 36px;outline:none;font-size:13px
+}
+.search input:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.search .ico{position:absolute;left:12px;top:9px;color:var(--dim2)}
+.search .clr{position:absolute;right:10px;top:8px;border:0;background:none;color:var(--dim2);cursor:pointer;font-size:15px}
+main{flex:1;display:grid;grid-template-columns:268px minmax(0,1fr) clamp(500px,43vw,880px);
+  grid-template-rows:minmax(0,1fr);min-height:0;overflow:hidden;width:100%}
+aside{border-right:1px solid var(--line);background:var(--panel);overflow:auto;padding:12px 0 40px}
+aside::-webkit-scrollbar,.list::-webkit-scrollbar,.detail-body::-webkit-scrollbar{width:8px}
+aside::-webkit-scrollbar-thumb,.list::-webkit-scrollbar-thumb,.detail-body::-webkit-scrollbar-thumb{background:var(--scroll);border-radius:4px}
+.facet{padding:4px 14px 12px;border-bottom:1px solid var(--line-soft)}
+.facet h3{margin:8px 0 8px;font-size:12px;color:var(--dim);font-weight:600;letter-spacing:.5px;display:flex;align-items:center;gap:6px}
+.facet h3 span{margin-left:auto;color:var(--dim2);font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  border:1px solid var(--line);background:var(--chip-bg);color:var(--txt-3);border-radius:8px;
+  padding:3px 8px;font-size:12px;cursor:pointer;transition:.15s;white-space:nowrap
+}
+.chip:hover{border-color:var(--chip-line-hover);color:var(--chip-hover-txt)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-txt)}
+.chip .n{color:var(--dim2);margin-left:5px;font-size:11px}
+.chip.on .n{color:var(--accent-ink)}
+.kp-list{display:flex;flex-direction:column;gap:4px;max-height:340px;overflow:auto;padding-right:4px}
+.kp{
+  display:flex;align-items:center;gap:6px;padding:4px 7px;border-radius:7px;cursor:pointer;
+  font-size:12px;color:var(--txt-3);border:1px solid transparent
+}
+.kp:hover{background:var(--hover-bg)}
+.kp.on{background:var(--accent-soft);border-color:var(--accent-line-strong);color:var(--accent-txt)}
+.kp .num{font-family:Consolas,monospace;color:var(--dim2);font-size:11px;min-width:34px}
+.kp .lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kp .n{color:var(--dim2);font-size:11px}
+.kpin{width:100%;height:28px;margin-bottom:7px;background:var(--input-bg);border:1px solid var(--line);
+  border-radius:7px;color:var(--txt);padding:0 8px;font-size:12px;outline:none}
+.kpin:focus{border-color:var(--accent)}
+.kp .sj{font-size:10px;color:var(--kp-sj-txt);border:1px solid var(--line-2);border-radius:4px;padding:0 3px;line-height:1.4}
+.ver{font-size:11px;color:var(--accent-ink);background:var(--accent-soft-2);border:1px solid var(--accent-line);
+  border-radius:6px;padding:1px 6px;font-weight:600;letter-spacing:.3px}
+.kptree{display:flex;flex-direction:column;gap:1px;max-height:44vh;overflow:auto;padding-right:2px}
+.srcpath{flex:0 1 auto;min-width:0;max-width:min(40vw,520px);display:flex;align-items:center;gap:6px;white-space:nowrap;overflow:hidden;
+  padding:3px 8px;border:1px solid var(--line);border-radius:7px;background:var(--panel);
+  font-size:11px;color:var(--dim);cursor:pointer;line-height:1.35}
+.srcpath:hover{border-color:var(--accent);color:var(--accent-ink)}
+.srcpath.copied{border-color:var(--ok);color:var(--ok)}
+.srcpath .k{flex:0 0 auto;color:var(--dim2);font-size:10px;border:1px solid var(--line-2);border-radius:4px;padding:0 4px}
+.srcpath .v{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:Consolas,monospace;font-size:10.5px}
+.kptree .lvl1{font-size:11px;color:var(--accent-ink-2);letter-spacing:.5px;margin:8px 0 3px;padding-left:4px;
+  border-left:2px solid rgba(63,189,245,.4)}
+.kptree summary{list-style:none;cursor:pointer;font-size:12px;color:var(--txt-3);padding:2px 5px;border-radius:6px;
+  display:flex;align-items:center;gap:5px}
+.kptree summary::-webkit-details-marker{display:none}
+.kptree summary:hover{background:var(--hover-bg)}
+.kptree .tw{color:var(--dim3);font-size:10px;width:9px;flex:0 0 9px;transition:.15s}
+.kptree details[open] summary .tw{transform:rotate(90deg)}
+.kptree .cnt{margin-left:auto;color:var(--dim2);font-size:11px}
+.kptree .lvl2 summary{padding-left:6px;color:var(--txt-4);font-size:11.5px}
+.kptree .lvl3 summary{padding-left:16px;color:var(--txt-5)}
+.kptree .ct{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kptree .pt{display:flex;gap:5px;align-items:center;padding:2px 6px 2px 26px;font-size:12px;color:var(--txt-6);
+  cursor:pointer;border-radius:6px;border:1px solid transparent}
+.kptree .pt:hover{background:var(--hover-bg);color:var(--txt-7)}
+.kptree .pt.on{background:var(--accent-soft);border-color:var(--accent-line-strong);color:var(--accent-txt)}
+.kptree .pt .nm{color:var(--dim3);font-size:11px;font-family:Consolas,monospace;flex:0 0 auto}
+.kptree .pt .lb{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kptree .pt .nt{color:var(--dim2);font-size:11px}
+.kptree .none{color:var(--dim3);font-size:12px;padding:8px 4px}
+.star{background:none;border:0;color:var(--star);cursor:pointer;font-size:14px;line-height:1;padding:0 2px;flex:0 0 auto}
+.star:hover{color:var(--star-on)}
+.star.on{color:var(--star-on);text-shadow:0 0 8px var(--star-glow)}
+mark{background:var(--mark-bg);color:var(--mark-txt);border-radius:3px;padding:0 1px}
+.link-more{display:block;margin:8px 4px 0;font-size:12px;color:var(--accent);cursor:pointer;background:none;border:0;padding:0;text-align:left}
+.link-more:hover{text-decoration:underline}
+.select{width:100%;height:32px;background:var(--input-bg);color:var(--txt);border:1px solid var(--line);border-radius:8px;padding:0 8px;font-size:12px}
+.bar{
+  height:44px;flex:0 0 44px;display:flex;align-items:center;gap:12px;padding:0 16px;
+  border-bottom:1px solid var(--line);background:var(--panel)
+}
+.bar .cnt{color:var(--dim);font-size:12px}
+.bar .cnt b{color:var(--accent);font-weight:600}
+.bar .active{display:flex;gap:6px;overflow:hidden}
+.bar .active .tag{background:var(--accent-soft);border:1px solid var(--accent-line-4);color:var(--accent-txt-2);
+  border-radius:6px;padding:1px 7px;font-size:11px;white-space:nowrap;cursor:pointer}
+.bar .active .tag:hover{border-color:var(--accent)}
+.bar select{margin-left:auto;height:28px;background:var(--input-bg);color:var(--txt);border:1px solid var(--line);border-radius:7px;padding:0 6px;font-size:12px}
+.center{display:flex;flex-direction:column;min-width:0;min-height:0;background:var(--bg)}
+.list{flex:1;overflow:auto;padding:12px 12px 24px;display:flex;flex-direction:column;gap:9px}
+.card{
+  border:1px solid var(--line);border-radius:11px;background:var(--card-bg);
+  padding:11px 13px;cursor:pointer;transition:.15s;position:relative
+}
+.card:hover{border-color:var(--card-hover-line);transform:translateY(-1px);box-shadow:0 6px 20px var(--shadow-1)}
+.card.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.card .top{display:flex;align-items:center;gap:7px;margin-bottom:6px;flex-wrap:wrap}
+.qno{font-family:Consolas,monospace;font-size:12px;color:var(--accent-ink);background:var(--accent-soft-3);
+  border:1px solid var(--accent-line-2);border-radius:6px;padding:1px 7px;font-weight:700}
+.badge{font-size:11px;border-radius:6px;padding:1px 6px;border:1px solid var(--line);color:var(--dim)}
+.badge.g{background:var(--badge-g-bg);border-color:var(--badge-g-line);color:var(--badge-g-txt)}
+.badge.s{background:var(--badge-s-bg);border-color:var(--badge-s-line);color:var(--badge-s-txt)}
+.badge.w{background:var(--badge-w-bg);border-color:var(--badge-w-line);color:var(--badge-w-txt)}
+.card .paper{margin-left:auto;color:var(--dim2);font-size:11px;max-width:46%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.card .stem{color:var(--txt-8);font-size:13px;line-height:1.65;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .kps{display:flex;gap:5px;margin-top:8px;flex-wrap:wrap}
+.kptag{font-size:11px;color:var(--kptag-txt);background:var(--kptag-bg);border:1px solid var(--line-2);border-radius:5px;padding:1px 6px}
+.more{padding:10px;display:flex;justify-content:center}
+.more button{background:var(--more-bg);color:var(--accent-txt-2);border:1px solid var(--more-line);border-radius:9px;padding:8px 18px;cursor:pointer;font-size:13px}
+.more button:hover{border-color:var(--accent)}
+.empty{color:var(--dim2);text-align:center;padding:48px 20px;font-size:13px}
+.detail{border-left:1px solid var(--line);background:var(--panel);display:flex;flex-direction:column;min-width:0;min-height:0}
+.detail-head{padding:12px 16px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.detail-head .line1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.detail-head .t{font-weight:700;font-size:14px;color:var(--txt-strong)}
+.detail-head .sub{margin-top:6px;color:var(--dim);font-size:12px;display:flex;gap:10px;flex-wrap:wrap}
+.detail-head .actions{margin-top:9px;display:flex;gap:8px;flex-wrap:wrap}
+.btn{font-size:11px;border:1px solid var(--line);background:var(--btn-bg);color:var(--txt-3);border-radius:7px;padding:3px 9px;cursor:pointer}
+.btn:hover{border-color:var(--accent);color:var(--accent-txt)}
+.detail-body{flex:1;overflow:auto;padding:14px 16px 40px}
+.placeholder{color:var(--dim2);display:grid;place-items:center;height:100%;text-align:center;font-size:13px;line-height:2}
+.md{font-size:14px;line-height:1.85;color:var(--txt-2);word-break:break-word}
+.md img{max-width:100% !important;height:auto;border-radius:8px;border:1px solid var(--line);background:#fff;margin:10px 0;display:block;cursor:zoom-in}
+.md h1,.md h2,.md h3{font-size:15px;margin:14px 0 8px;color:var(--txt-strong)}
+.md p{margin:8px 0}
+.md ul,.md ol{margin:8px 0 8px 18px}
+details.ans{margin:16px 0 8px;border:1px solid var(--ans-line);border-radius:10px;background:var(--ans-bg);overflow:hidden}
+details.ans summary{cursor:pointer;padding:9px 13px;font-size:12.5px;color:var(--accent-ink);background:var(--ans-head);
+  list-style:none;display:flex;align-items:center;gap:8px;user-select:none}
+details.ans summary::-webkit-details-marker{display:none}
+details.ans summary::before{content:"▸";display:inline-block;transition:.18s;color:var(--accent)}
+details.ans[open] summary::before{transform:rotate(90deg)}
+.ans-body{padding:4px 14px 14px;border-top:1px solid var(--ans-top-line)}
+.wl{color:var(--accent-ink-2);border-bottom:1px dashed var(--wl-line)}
+.formula-fail{color:var(--danger)}
+::-webkit-scrollbar{width:9px;height:9px}
+@media (max-width:1180px){
+  main{grid-template-columns:240px minmax(0,1fr)}
+  .detail{position:fixed;right:0;top:64px;bottom:0;width:min(720px,94vw);z-index:20;
+    box-shadow:-16px 0 40px var(--shadow-2);display:none}
+  .detail.show{display:flex}
+}
+</style>
+</head>
+<body>
+<header>
+  <button class="leftbtn" id="leftBtn" title="收起筛选栏（Ctrl+B）">◧</button>
+  <div class="brand"><div class="logo">题</div><span>试卷题库</span><span class="ver" id="ver"></span></div>
+  <div class="stats" id="stats"></div>
+  <div class="srcpath" id="srcPath" title="点击复制题库路径">
+    <span class="k">题库路径</span><span class="v" id="srcPathVal">读取中…</span></div>
+  <div class="search">
+    <span class="ico">⌕</span>
+    <input id="q" placeholder="搜题干、知识点、试卷名…（回车筛选）" autocomplete="off">
+    <button class="clr" id="qClear" title="清空">✕</button>
+  </div>
+  <div class="theme">
+    <button class="theme-btn" id="themeBtn" title="切换色彩方案">
+      <span class="sw" id="themeSw"></span><span id="themeName">青瓷</span><span class="cv">▾</span>
+    </button>
+    <div class="theme-menu" id="themeMenu"></div>
+  </div>
+</header>
+
+<main>
+  <aside>
+    <div class="facet"><h3>学科 <span id="c-subject"></span></h3><div class="chips" id="f-subject"></div></div>
+    <div class="facet"><h3>年级 <span id="c-grade"></span></h3><div class="chips" id="f-grade"></div>
+      <div class="chips" id="f-volume" style="margin-top:7px"></div></div>
+    <div class="facet"><h3>题型 <span id="c-type"></span></h3><div class="chips" id="f-type"></div></div>
+    <div class="facet"><h3>我的选题 <span id="c-fav">0</span></h3>
+      <div class="chips">
+        <button class="chip" id="favOnly">只看收藏</button>
+        <button class="chip" id="favExport">导出 MD</button>
+        <button class="chip" id="favClear">清空</button>
+      </div></div>
+    <div class="facet"><h3>试卷来源 <span id="c-paper"></span></h3>
+      <select class="select" id="f-paper"><option value="">全部试卷</option></select></div>
+    <div class="facet"><h3>知识点树 <span id="c-kp"></span></h3>
+      <input class="kpin" id="kpSearch" placeholder="在知识点树中搜索…" autocomplete="off">
+      <div class="kptree" id="kpTree"></div></div>
+  </aside>
+
+  <div class="center">
+    <div class="bar">
+      <div class="cnt" id="cnt"></div>
+      <div class="active" id="active"></div>
+      <select id="sort">
+        <option value="default">年级 · 试卷 · 题号</option>
+        <option value="knowledge">按知识点</option>
+        <option value="grade">按年级</option>
+      </select>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+
+  <div class="detail" id="detail">
+    <div class="placeholder" id="ph">左侧筛选，点击任意题目<br>在这里查看完整题干、配图与解析</div>
+  </div>
+</main>
+
+<script>
+const S = { grade:new Set(), subject:new Set(), type:new Set(), volume:new Set(), kp:new Set(), paper:"", q:"", kpQ:"", sort:"default", page:1, size:40, favOnly:false };
+let DATA = null, ITEMS = [], VIEW = [], SEL = null, META = null;
+const FAV_KEY = "qb.fav";
+let FAV = new Set();
+try{ FAV = new Set(JSON.parse(localStorage.getItem(FAV_KEY) || "[]")); }catch(e){ FAV = new Set(); }
+
+const $ = s => document.querySelector(s);
+const esc = s => (s||"").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const rxEsc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** 搜索高亮：只处理公式外的正文，避免把 <mark> 插进 LaTeX */
+function hlText(s){
+  if(!S.q) return esc(s);
+  const re = new RegExp(rxEsc(esc(S.q)), "gi");
+  return String(s).split(/(\$[^$]*\$)/g).map(seg => {
+    const isMath = seg.length > 1 && seg.startsWith("$") && seg.endsWith("$");
+    const e = esc(seg);
+    return isMath ? e : e.replace(re, m => `<mark>${m}</mark>`);
+  }).join("");
+}
+
+function kpSortKey(s){
+  const m = (s||"").match(/^(\d+)\s*-\s*(\d+)/);
+  return m ? [0, +m[1], +m[2], s] : [1, 9999, 9999, s];
+}
+function kpParts(s){
+  const m = (s||"").match(/^(\d+)\s*-\s*(\d+)\s*(.*)$/);
+  return m ? {num:m[1]+"-"+m[2], label:m[3]||s} : {num:"", label:s};
+}
+
+/* ---------- 色彩方案 ---------- */
+const THEMES = [
+  { id:"celadon", name:"青瓷",   bg:"#eef2ee", ac:"#2f8a72" },
+  { id:"paper",   name:"纸墨",   bg:"#f5efe3", ac:"#a8462f" },
+  { id:"white",   name:"纯白",   bg:"#ffffff", ac:"#1d7ad9" }
+];
+const DEFAULT_THEME = "celadon";
+const THEME_KEY = "qb-theme";
+function applyTheme(id, persist){
+  const t = THEMES.find(x => x.id === id) || THEMES[0];
+  if(t.id === DEFAULT_THEME) document.body.removeAttribute("data-theme");
+  else document.body.setAttribute("data-theme", t.id);
+  const nm = $("#themeName"); if(nm) nm.textContent = t.name;
+  const sw = $("#themeSw"); if(sw) sw.style.background = `linear-gradient(135deg, ${t.bg} 46%, ${t.ac} 46%)`;
+  document.querySelectorAll(".theme-item").forEach(el => {
+    const on = el.dataset.t === t.id;
+    el.classList.toggle("on", on);
+    const ck = el.querySelector(".ck"); if(ck) ck.textContent = on ? "✓" : "";
+  });
+  if(persist){ try{ localStorage.setItem(THEME_KEY, t.id); }catch(e){} }
+}
+function initTheme(){
+  const menu = $("#themeMenu"), btn = $("#themeBtn");
+  if(!menu || !btn) return;
+  menu.innerHTML = THEMES.map(t => `<div class="theme-item" data-t="${t.id}">
+      <span class="dot" style="background:linear-gradient(135deg, ${t.bg} 46%, ${t.ac} 46%)"></span>
+      <span class="nm">${t.name}</span><span class="ck"></span></div>`).join("");
+  menu.querySelectorAll(".theme-item").forEach(el => el.addEventListener("click", () => {
+    applyTheme(el.dataset.t, true);
+    menu.classList.remove("open");
+  }));
+  btn.addEventListener("click", e => { e.stopPropagation(); menu.classList.toggle("open"); });
+  document.addEventListener("click", () => menu.classList.remove("open"));
+  document.addEventListener("keydown", e => { if(e.key === "Escape") menu.classList.remove("open"); });
+
+  let saved = null;
+  try{ saved = localStorage.getItem(THEME_KEY); }catch(e){}
+  // 老版本存过 deep（已移除的配色）→ 迁到默认方案
+  if(saved === "deep"){ saved = DEFAULT_THEME; try{ localStorage.setItem(THEME_KEY, saved); }catch(e){} }
+  const q = new URLSearchParams(location.search).get("theme");
+  applyTheme((q && THEMES.some(t => t.id === q)) ? q : (saved || DEFAULT_THEME), false);
+}
+initTheme();
+
+/* ---------- 左栏收起 / 展开 ---------- */
+const LEFT_KEY = "qb-left";
+function setLeft(hide, persist){
+  document.body.classList.toggle("hide-left", !!hide);
+  const b = $("#leftBtn");
+  if(b){
+    b.textContent = hide ? "▤" : "◧";
+    b.title = (hide ? "展开筛选栏" : "收起筛选栏") + "（Ctrl+B）";
+    b.classList.toggle("on", !!hide);
+  }
+  if(persist){ try{ localStorage.setItem(LEFT_KEY, hide ? "1" : "0"); }catch(e){} }
+  if(typeof fitImages === "function") setTimeout(fitImages, 90);
+}
+function initLeft(){
+  const b = $("#leftBtn");
+  if(b) b.addEventListener("click", () => setLeft(!document.body.classList.contains("hide-left"), true));
+  document.addEventListener("keydown", e => {
+    if((e.ctrlKey || e.metaKey) && (e.key === "b" || e.key === "B")){
+      e.preventDefault();
+      setLeft(!document.body.classList.contains("hide-left"), true);
+    }
+  });
+  let saved = null;
+  try{ saved = localStorage.getItem(LEFT_KEY); }catch(e){}
+  setLeft(saved === "1", false);
+}
+initLeft();
+
+async function loadSrcPath(){
+  try{
+    const r = await fetch("api/meta"); const m = await r.json();
+    META = m;
+    const p = m.source || m.vault || "";
+    const el = $("#srcPathVal"), box = $("#srcPath");
+    el.textContent = p || "（未配置）";
+    box.title = "点击复制：" + p;
+    box.onclick = () => {
+      const done = () => {
+        box.classList.add("copied"); el.textContent = "已复制到剪贴板";
+        setTimeout(() => { box.classList.remove("copied"); el.textContent = p; }, 1200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(p).then(done).catch(() => fallbackCopy(p, done));
+      } else { fallbackCopy(p, done); }
+    };
+  } catch(e){ $("#srcPathVal").textContent = "（读取路径失败）"; }
+}
+function fallbackCopy(text, done){
+  try{
+    const ta = document.createElement("textarea"); ta.value = text;
+    ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select(); document.execCommand("copy");
+    document.body.removeChild(ta); done();
+  } catch(e){}
+}
+
+async function boot(){
+  try{ await loadSrcPath(); }catch(e){}
+  const r = await fetch("api/questions");
+  DATA = await r.json();
+  ITEMS = DATA.items;
+  const m = DATA.meta;
+  $("#ver").textContent = "v" + (m.version || "?");
+  $("#stats").innerHTML = `<span><b>${m.count}</b> 题</span><span><b>${m.papers}</b> 卷</span>`+
+                          `<span><b>${m.knowledgeCount}</b> 知识点</span><span style="color:var(--dim3)">索引 ${m.generatedAt.slice(5,16)}</span>`;
+  buildFacets();
+  apply();
+  renderKpTree();
+  renderFav();
+}
+boot();
+
+/* ---------- 心跳：浏览器页面关掉后，服务自动退出 ---------- */
+function ping(){ fetch("api/ping", { cache:"no-store" }).catch(() => {}); }
+ping();
+setInterval(ping, 10000);
+window.addEventListener("pagehide", () => {
+  try{ fetch("api/ping?bye=1", { cache:"no-store", keepalive:true }).catch(() => {}); }catch(e){}
+});
+
+function countBy(key){
+  const c = {};
+  ITEMS.forEach(x => { const v = x[key]; if(v) c[v] = (c[v]||0)+1; });
+  return c;
+}
+function chipsHTML(id, arr, cnt){
+  return arr.map(v => `<button class="chip${S[id].has(v)?" on":""}" data-k="${id}" data-v="${esc(v)}">${esc(v)}<span class="n">${cnt[v]||0}</span></button>`).join("");
+}
+function buildFacets(){
+  const cSub = countBy("subject"), cG = countBy("grade"), cT = countBy("type"), cVol = countBy("volume");
+  const subs = Object.keys(cSub).sort((a,b)=>cSub[b]-cSub[a]);
+  $("#f-subject").innerHTML = chipsHTML("subject", subs, cSub);
+  $("#f-grade").innerHTML = chipsHTML("grade", ["七年级","八年级","九年级"].filter(g=>cG[g]), cG);
+  $("#f-volume").innerHTML = chipsHTML("volume", ["上册","下册","全一册"].filter(v=>cVol[v]), cVol);
+  $("#f-type").innerHTML = chipsHTML("type", ["选择题","填空题","解答题","其他"].filter(t=>cT[t]), cT);
+  $("#c-subject").textContent = "共 "+subs.length;
+  $("#c-grade").textContent = "共 "+Object.keys(cG).length;
+
+  const papers = [...new Set(ITEMS.map(x=>x.paper))].sort();
+  $("#f-paper").innerHTML = `<option value="">全部试卷（${papers.length}）</option>` +
+    papers.map(p => `<option value="${esc(p)}">${esc(p)}（${ITEMS.filter(x=>x.paper===p).length}）</option>`).join("");
+}
+function renderKpTree(){
+  const counts = DATA.knowledgeCounts || {}, tree = DATA.kpTree || {}, q = S.kpQ;
+  let html = "", shown = 0;
+  for(const subject of Object.keys(tree)){
+    let inner = "";
+    for(const b of tree[subject]){
+      let chs = "";
+      for(const ch of b.chapters){
+        const pts = ch.points.filter(p => (counts[p]||0) > 0 || S.kp.has(p));
+        const f = q ? pts.filter(p => (p + " " + kpParts(p).label).toLowerCase().includes(q)) : pts;
+        if(!f.length) continue;
+        const open = q || ch.points.some(p => S.kp.has(p));
+        const c = f.reduce((a,p) => a + (counts[p]||0), 0);
+        chs += `<details class="lvl3"${open?" open":""}><summary><span class="tw">▸</span>`+
+               `<span class="ct" title="${esc(ch.title)}">${esc(ch.title)}</span><span class="cnt">${c}</span></summary>`+
+               f.map(p => {
+                 const pp = kpParts(p); shown++;
+                 return `<div class="pt${S.kp.has(p)?" on":""}" data-k="kp" data-v="${esc(p)}" title="${esc(p)}">`+
+                        `<span class="nm">${esc(pp.num)}</span><span class="lb">${esc(pp.label)}</span>`+
+                        `<span class="nt">${counts[p]||0}</span></div>`;
+               }).join("") + `</details>`;
+      }
+      if(chs) inner += `<details class="lvl2" open><summary><span class="tw">▸</span><span class="ct">${esc(b.book)}</span></summary>${chs}</details>`;
+    }
+    if(inner) html += `<div class="lvl1">${esc(subject)}</div>${inner}`;
+  }
+  $("#kpTree").innerHTML = html || `<div class="none">没有匹配的知识点</div>`;
+  $("#c-kp").textContent = q ? `命中 ${shown}` : `共 ${Object.keys(counts).length} 个`;
+}
+
+/* ---------- 我的选题 ---------- */
+function saveFav(){
+  try{ localStorage.setItem(FAV_KEY, JSON.stringify([...FAV])); }catch(e){}
+}
+function renderFav(){
+  $("#c-fav").textContent = FAV.size;
+  $("#favOnly").classList.toggle("on", S.favOnly);
+  document.querySelectorAll(".star").forEach(b => {
+    const on = FAV.has(b.dataset.fav);
+    b.classList.toggle("on", on);
+  });
+}
+function toggleFav(id){
+  FAV.has(id) ? FAV.delete(id) : FAV.add(id);
+  saveFav();
+  const card = document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
+  if(card){
+    const b = card.querySelector(".star");
+    if(b){ b.classList.toggle("on", FAV.has(id)); b.title = FAV.has(id) ? "取消收藏" : "加入选题夹"; }
+  }
+  renderFav();
+  if(S.favOnly){ S.page = 1; apply(); }
+}
+async function exportFav(){
+  if(!FAV.size){ alert("选题夹是空的：先点题目卡片左侧的 ★ 收藏几道题。"); return; }
+  const list = ITEMS.filter(x => FAV.has(x.id));
+  const pad = n => String(n).padStart(2,"0");
+  const now = new Date();
+  let out = `# 选题夹（${list.length} 题）\n\n> 由试卷题库 v${DATA.meta.version} 导出 · `+
+            `${now.getFullYear()}-${pad(now.getMonth()+1)}-${pad(now.getDate())} ${pad(now.getHours())}:${pad(now.getMinutes())}\n\n`+
+            `> 配图为原卷相对路径；若整份文件移出原题目录，需同时复制同名图片。\n\n`;
+  for(let i = 0; i < list.length; i++){
+    const x = list[i];
+    let body = "";
+    try{
+      const r = await fetch(vaultURL(x.rel));
+      body = (await r.text()).replace(/^\uFEFF/,"").replace(/\r\n/g,"\n").replace(/^---\n[\s\S]*?\n---\n?/,"").trim();
+    }catch(e){ body = "（读取失败：" + e.message + "）"; }
+    out += `---\n\n## ${i+1}. ${x.paper} · Q${String(x.qno).padStart(2,"0")}（${x.grade} ${x.subject} ${x.type}）\n\n`+
+           `> 来源：${x.id}\n\n${body}\n\n`;
+  }
+  const blob = new Blob([out], { type:"text/markdown;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `选题夹-${now.getFullYear()}${pad(now.getMonth()+1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}.md`;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+}
+
+document.addEventListener("click", e => {
+  const star = e.target.closest(".star");
+  if(star){ e.stopPropagation(); toggleFav(star.dataset.fav); return; }
+  const b = e.target.closest(".chip, .kp, .pt");
+  if(b && b.dataset.k){
+    const set = S[b.dataset.k], v = b.dataset.v;
+    set.has(v) ? set.delete(v) : set.add(v);
+    S.page = 1;
+    if(b.dataset.k === "kp") renderKpTree(); else b.classList.toggle("on");
+    apply();
+    return;
+  }
+  const card = e.target.closest(".card");
+  if(card){ openDetail(card.dataset.id, card); }
+});
+$("#kpSearch").addEventListener("input", e => { S.kpQ = e.target.value.trim().toLowerCase(); renderKpTree(); });
+$("#favOnly").addEventListener("click", () => { S.favOnly = !S.favOnly; S.page = 1; renderFav(); apply(); });
+$("#favExport").addEventListener("click", exportFav);
+$("#favClear").addEventListener("click", () => {
+  if(!FAV.size) return;
+  if(!confirm(`清空选题夹里的 ${FAV.size} 道题？`)) return;
+  FAV.clear(); saveFav(); renderFav(); S.page = 1; apply();
+});
+$("#f-paper").addEventListener("change", e => { S.paper = e.target.value; S.page = 1; apply(); });
+$("#sort").addEventListener("change", e => { S.sort = e.target.value; S.page = 1; apply(); });
+$("#qClear").addEventListener("click", () => { $("#q").value = ""; S.q = ""; S.page = 1; apply(); });
+let qTimer;
+$("#q").addEventListener("input", e => {
+  clearTimeout(qTimer);
+  qTimer = setTimeout(() => { S.q = e.target.value.trim().toLowerCase(); S.page = 1; apply(); }, 180);
+});
+
+function match(x){
+  if(S.favOnly && !FAV.has(x.id)) return false;
+  if(S.grade.size && !S.grade.has(x.grade)) return false;
+  if(S.subject.size && !S.subject.has(x.subject)) return false;
+  if(S.type.size && !S.type.has(x.type)) return false;
+  if(S.volume.size && !S.volume.has(x.volume)) return false;
+  if(S.paper && x.paper !== S.paper) return false;
+  if(S.kp.size){ let ok = false; for(const k of S.kp){ if(x.knowledge.includes(k)){ ok = true; break; } } if(!ok) return false; }
+  if(S.q){ const q = S.q; if(!(x.search.includes(q) || (x.id||"").toLowerCase().includes(q))) return false; }
+  return true;
+}
+function sortItems(a,b){
+  if(S.sort === "knowledge"){
+    const ka = (a.knowledge[0]||"zzz"), kb = (b.knowledge[0]||"zzz");
+    const A = kpSortKey(ka), B = kpSortKey(kb);
+    return (A[0]-B[0])||(A[1]-B[1])||(A[2]-B[2])||(A[3]>B[3]?1:-1)||(a.qno-b.qno);
+  }
+  if(S.sort === "grade"){
+    const g = gname => ({"七年级":1,"八年级":2,"九年级":3}[gname]||9);
+    return g(a.grade)-g(b.grade) || a.qno-b.qno;
+  }
+  const g = gname => ({"七年级":1,"八年级":2,"九年级":3}[gname]||9);
+  return g(a.grade)-g(b.grade) || (a.paper===b.paper ? 0 : (a.paper>b.paper?1:-1)) || a.qno-b.qno;
+}
+function apply(){
+  VIEW = ITEMS.filter(match).sort(sortItems);
+  renderActive();
+  renderList();
+  const total = ITEMS.length, cur = VIEW.length;
+  $("#cnt").innerHTML = cur === total ? `全部 <b>${total}</b> 题` : `筛选出 <b>${cur}</b> 题 / 共 ${total} 题`;
+}
+function renderActive(){
+  const tags = [];
+  ["grade","subject","type","volume"].forEach(k => S[k].forEach(v => tags.push(`<span class="tag" data-k="${k}" data-v="${esc(v)}">${esc(v)} ✕</span>`)));
+  S.kp.forEach(v => tags.push(`<span class="tag" data-k="kp" data-v="${esc(v)}">${esc(kpParts(v).label)} ✕</span>`));
+  if(S.paper) tags.push(`<span class="tag" data-k="paper" data-v="">${esc(S.paper)} ✕</span>`);
+  if(S.q) tags.push(`<span class="tag" data-k="q" data-v="">“${esc(S.q)}” ✕</span>`);
+  $("#active").innerHTML = tags.join("");
+  $("#active").querySelectorAll(".tag").forEach(t => t.addEventListener("click", () => {
+    const k = t.dataset.k, v = t.dataset.v;
+    if(k === "paper"){ S.paper = ""; $("#f-paper").value = ""; }
+    else if(k === "q"){ S.q = ""; $("#q").value = ""; }
+    else { S[k].delete(v); if(k === "kp") renderKpTree(); else { const b=document.querySelector(`.chip[data-k="${k}"][data-v="${CSS.escape(v)}"]`); if(b) b.classList.remove("on"); } }
+    S.page = 1; apply();
+  }));
+}
+function cardHTML(x){
+  const ks = x.knowledge.slice(0,3).map(k => `<span class="kptag">${esc(kpParts(k).label)}</span>`).join("");
+  const more = x.knowledge.length > 3 ? `<span class="kptag">+${x.knowledge.length-3}</span>` : "";
+  return `<div class="card${SEL===x.id?" sel":""}" data-id="${esc(x.id)}">
+    <div class="top">
+      <button class="star${FAV.has(x.id)?" on":""}" data-fav="${esc(x.id)}" title="${FAV.has(x.id)?"取消收藏":"加入选题夹"}">★</button>
+      <span class="qno">Q${String(x.qno).padStart(2,"0")}</span>
+      <span class="badge g">${esc(x.grade)}${x.volume?"·"+esc(x.volume):""}</span>
+      <span class="badge s">${esc(x.subject)}</span>
+      <span class="badge">${esc(x.type)}</span>
+      ${x.hasImg?"<span class=\"badge w\">图</span>":""}
+      ${x.hasAnswer?"":"<span class=\"badge w\" title=\"该题文件缺少解析 callout\">无解析</span>"}
+      <span class="paper" title="${esc(x.paper)}">${esc(x.paper)}</span>
+    </div>
+    <div class="stem">${hlText(x.stemTex || x.stem) || "（题干为空）"}</div>
+    <div class="kps">${ks}${more}</div>
+  </div>`;
+}
+function renderList(){
+  const n = S.page * S.size;
+  const show = VIEW.slice(0, n);
+  $("#list").innerHTML = show.length ? show.map(cardHTML).join("") +
+    (VIEW.length > n ? `<div class="more"><button id="loadMore">加载更多（已显示 ${n} / ${VIEW.length}）</button></div>` : "")
+    : `<div class="empty">没有匹配的题目，试试放宽筛选条件</div>`;
+  const btn = $("#loadMore");
+  if(btn) btn.addEventListener("click", () => { S.page++; renderList(); });
+  typeset($("#list"));
+}
+async function typeset(el){
+  if(!window.MathJax?.typesetPromise || !el) return;
+  try{
+    if(MathJax.typesetClear) MathJax.typesetClear([el]);
+    await MathJax.typesetPromise([el]);
+  }catch(e){ /* 单条公式出错不影响整体 */ }
+}
+
+function vaultURL(rel){
+  // 服务端 /vault/ 只开放「题库那一层」，索引里的 rel 是相对库根，这里把 sub 前缀去掉
+  let p = String(rel || "");
+  const sub = META && META.sub ? META.sub + "/" : "";
+  if(sub && p.startsWith(sub)) p = p.slice(sub.length);
+  return "vault/" + p.split("/").map(encodeURIComponent).join("/");
+}
+
+function preprocess(md, dir){
+  const base = dir ? dir.replace(/\\/g,"/") : "";
+  const imgStyle = size => size ? ` style="max-width:${+size>0?+size:600}px"` : "";
+  const localImg = (p, size, alt) => `<img src="${vaultURL(normalize((base?base+"/":"") + p))}" alt="${esc(alt||"")}"${imgStyle(size)} loading="lazy">`;
+  // Obsidian 图片嵌入：![[图片.png]] / ![[图片.png|300]]
+  md = md.replace(/!\[\[([^\]|]+?)(?:\|([^\]]*))?\]\]/g, (m, target, size) => {
+    const t = target.trim();
+    if(!/\.(png|jpe?g|gif|webp|svg|bmp)$/i.test(t)) return m;   // 非图片嵌入留给下面的双链处理
+    return localImg(t, size, t);
+  });
+  // Obsidian 双链 → 可读文本
+  md = md.replace(/\[\[([^\]|]+?)(?:#([^\]|]+))?(?:\|([^\]]+))?\]\]/g, (m, target, anchor, alias) => {
+    const label = (alias || target || "").trim();
+    return `<span class="wl" title="${esc(target||"")}${anchor?"#"+esc(anchor):""}">${esc(label)}</span>`;
+  });
+  // 图片：![alt|size](path)（路径允许带空格，末尾可带 "title"）
+  md = md.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, src) => {
+    src = src.trim().replace(/\s+"[^"]*"\s*$/,"");
+    let [p, size] = src.split("|");
+    if(/^(https?:|data:)/.test(p)) return `<img src="${esc(p)}" alt="${esc(alt)}"${imgStyle(size)}>`;
+    return localImg(p, size, alt);
+  });
+  return md;
+}
+function normalize(p){
+  const parts = p.split("/");
+  const out = [];
+  for(const s of parts){
+    if(s === "." || s === "") continue;
+    if(s === "..") out.pop(); else out.push(s);
+  }
+  return out.join("/");
+}
+function splitCallouts(text){
+  const lines = text.split(/\r?\n/);
+  const segs = [];
+  let buf = [], mode = null, cur = null;
+  for(let i=0;i<lines.length;i++){
+    const l = lines[i];
+    const m = l.match(/^\s*>\s*\[!([^\]]+)\]([+-])?\s*(.*)$/);
+    if(m && !mode){
+      if(buf.length){ segs.push({type:"md", text:buf.join("\n")}); buf = []; }
+      mode = "co"; cur = {type:"callout", title:(m[3]||m[1]).trim(), icon:m[1].toLowerCase(), open:m[2]!=="-", text:[]};
+      continue;
+    }
+    if(mode === "co"){
+      if(/^\s*>/.test(l)){ cur.text.push(l.replace(/^\s*>\s?/,"")); continue; }
+      if(l.trim() === ""){ cur.text.push(""); continue; }
+      segs.push({type:"callout", ...cur, text:cur.text.join("\n")});
+      mode = null; cur = null; buf = [l]; continue;
+    }
+    buf.push(l);
+  }
+  if(mode==="co") segs.push({type:"callout", ...cur, text:cur.text.join("\n")});
+  if(buf.length) segs.push({type:"md", text:buf.join("\n")});
+  return segs;
+}
+function renderMD(text, dir){
+  marked.setOptions({gfm:true, breaks:true});
+  return marked.parse(preprocess(text, dir));
+}
+
+// 试题配图大多是 200~400px 的裁图，按 2 倍放大铺到栏内更好看清；
+// 原图更大时只缩放到栏宽。点击图片可打开原始文件。
+const IMG_SCALE = 2;
+function fitImages(){
+  const body = document.querySelector(".detail-body");
+  if(!body) return;
+  const maxW = Math.max(240, body.clientWidth - 32);
+  document.querySelectorAll("#md img").forEach(img => {
+    if(!img.dataset.zoom){
+      img.dataset.zoom = "1";
+      img.addEventListener("click", () => window.open(img.src, "_blank"));
+    }
+    const apply = () => {
+      const nw = img.naturalWidth || 0;
+      if(!nw) return;
+      const target = Math.min(maxW, Math.round(nw * IMG_SCALE));
+      img.style.width = target + "px";
+      img.style.maxWidth = "100%";
+    };
+    if(img.complete && img.naturalWidth) apply();
+    else img.addEventListener("load", apply, { once:true });
+  });
+}
+let fitTimer = null;
+window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitImages, 150); });
+async function openDetail(id, card){
+  SEL = id;
+  document.querySelectorAll(".card").forEach(c => c.classList.remove("sel"));
+  if(card) card.classList.add("sel");
+  const item = ITEMS.find(x => x.id === id);
+  if(!item) return;
+  const detail = $("#detail");
+  detail.classList.add("show");
+  detail.innerHTML = `<div class="detail-head">
+      <div class="line1"><span class="qno">Q${String(item.qno).padStart(2,"0")}</span>
+        <span class="t">${esc(item.subject)} · ${esc(item.grade)}${item.volume?" · "+esc(item.volume):""} · ${esc(item.type)}</span></div>
+      <div class="sub"><span>${esc(item.paper)}</span><span style="color:var(--dim3)">${esc(item.id)}</span></div>
+      <div class="actions">
+        <button class="btn" id="toggleAll">展开/收起解析</button>
+        <button class="btn" id="copyId">复制 ID</button>
+        <button class="btn" id="openObs">在 Obsidian 打开</button>
+      </div>
+    </div>
+    <div class="detail-body"><div class="md" id="md">正在加载…</div></div>`;
+  const dir = item.rel.split("/").slice(0,-1).join("/");
+  try{
+    const r = await fetch(vaultURL(item.rel));
+    if(!r.ok) throw new Error("HTTP " + r.status);
+    let raw = await r.text();
+    raw = raw.replace(/^\uFEFF/,"").replace(/\r\n/g,"\n");
+    raw = raw.replace(/^---\n[\s\S]*?\n---\n?/,"");
+    const segs = splitCallouts(raw);
+    let html = "";
+    for(const s of segs){
+      if(s.type === "md"){ html += renderMD(s.text, dir); }
+      else {
+        html += `<details class="ans"${s.open?" open":""}><summary>${esc(s.title)}</summary><div class="ans-body">${renderMD(s.text, dir)}</div></details>`;
+      }
+    }
+    $("#md").innerHTML = html;
+    if(window.MathJax?.typesetPromise){ try{ await MathJax.typesetPromise([$("#md")]); }catch(e){} }
+    fitImages();
+  }catch(e){
+    $("#md").innerHTML = `<div class="empty">读取失败：${esc(e.message)}<br><span style="font-size:12px">${esc(item.rel)}</span></div>`;
+  }
+  $("#toggleAll").addEventListener("click", () => {
+    const all = document.querySelectorAll("#md details.ans");
+    const anyClosed = [...all].some(d => !d.open);
+    all.forEach(d => d.open = anyClosed);
+  });
+  $("#copyId").addEventListener("click", async () => {
+    try{ await navigator.clipboard.writeText(item.id); $("#copyId").textContent = "已复制"; setTimeout(()=>$("#copyId").textContent="复制 ID",1200);}catch(e){}
+  });
+  $("#openObs").addEventListener("click", () => {
+    const vaultName = encodeURIComponent((META && META.vaultName) || "【Knowledge Notes】");
+    const file = encodeURIComponent(item.rel.replace(/\.md$/,""));
+    location.href = `obsidian://open?vault=${vaultName}&file=${file}`;
+  });
+}
+</script>
+</body>
+</html>
