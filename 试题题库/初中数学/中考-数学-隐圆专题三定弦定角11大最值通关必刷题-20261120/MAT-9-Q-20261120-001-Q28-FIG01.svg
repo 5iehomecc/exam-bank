@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="700" fill="white"/>
+<line x1="47.879" y1="626.123" x2="248.940" y2="277.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="248.940" y1="277.618" x2="610.848" y2="304.426" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="610.848" y1="304.426" x2="852.121" y2="626.123" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="852.121" y1="626.123" x2="47.879" y2="626.123" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="47.879" y1="626.123" x2="610.848" y2="304.426" stroke="#2e86de" stroke-width="2.394" stroke-dasharray="5 4" stroke-linecap="butt"/>
+<line x1="852.121" y1="626.123" x2="654.154" y2="279.680" stroke="#2e86de" stroke-width="2.394" stroke-dasharray="5 4" stroke-linecap="butt"/>
+<line x1="610.848" y1="304.426" x2="530.424" y2="63.154" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<path d="M 657.146 284.917 L 651.909 287.910 L 648.917 282.673" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="37.156" y="639.527" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="242.238" y="266.895" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="618.891" y="297.724" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="862.844" y="639.527" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="642.090" y="282.361" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">G</text>
+<text x="541.147" y="60.473" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+</svg>

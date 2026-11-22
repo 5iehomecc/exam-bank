@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 900" width="1050" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1050" height="900" fill="white"/>
+<line x1="99.736" y1="563.411" x2="672.482" y2="563.411" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="99.736" y1="563.411" x2="958.856" y2="67.398" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="958.856" y1="67.398" x2="672.482" y2="563.411" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="672.482" y1="563.411" x2="958.856" y2="563.411" stroke="black" stroke-width="1.596" stroke-linecap="butt"/>
+<line x1="958.856" y1="67.398" x2="958.856" y2="835.466" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<line x1="772.713" y1="389.807" x2="958.856" y2="389.807" stroke="#9b59b6" stroke-width="1.995" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<line x1="772.999" y1="389.807" x2="772.713" y2="389.807" stroke="#000" stroke-width="7.980" stroke-linecap="butt"/>
+<path d="M 945.969 563.411 L 945.969 550.524 L 958.856 550.524" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<path d="M 945.969 389.807 L 945.969 376.920 L 958.856 376.920" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<path d="M 915.900 141.800 L 916.394 142.083 L 916.890 142.363 L 917.387 142.639 L 917.887 142.912 L 918.388 143.182 L 918.892 143.449 L 919.396 143.712 L 919.903 143.972 L 920.411 144.228 L 920.922 144.482 L 921.433 144.731 L 921.947 144.978 L 922.462 145.221 L 922.978 145.460 L 923.496 145.696 L 924.016 145.929 L 924.537 146.158 L 925.060 146.384 L 925.584 146.606 L 926.110 146.825 L 926.637 147.040 L 927.166 147.252 L 927.696 147.460 L 928.227 147.665 L 928.760 147.866 L 929.294 148.064 L 929.829 148.258 L 930.366 148.448 L 930.903 148.636 L 931.442 148.819 L 931.983 148.999 L 932.524 149.175 L 933.067 149.348 L 933.610 149.517 L 934.155 149.683 L 934.701 149.844 L 935.248 150.003 L 935.796 150.157 L 936.345 150.308 L 936.895 150.456 L 937.446 150.600 L 937.998 150.740 L 938.551 150.876 L 939.104 151.009 L 939.659 151.138 L 940.215 151.263 L 940.771 151.385 L 941.328 151.503 L 941.886 151.617 L 942.444 151.728 L 943.003 151.835 L 943.563 151.938 L 944.124 152.038 L 944.685 152.133 L 945.247 152.225 L 945.810 152.314 L 946.373 152.398 L 946.937 152.479 L 947.501 152.556 L 948.065 152.630 L 948.630 152.699 L 949.196 152.765 L 949.762 152.827 L 950.328 152.886 L 950.895 152.940 L 951.462 152.991 L 952.030 153.038 L 952.598 153.082 L 953.166 153.121 L 953.734 153.157 L 954.302 153.189 L 954.871 153.218 L 955.440 153.242 L 956.009 153.263 L 956.578 153.280 L 957.147 153.293 L 957.717 153.302 L 958.286 153.308 L 958.856 153.310" fill="none" stroke="dimgray" stroke-width="2.261" stroke-linejoin="round"/>
+<line x1="99.736" y1="563.411" x2="958.856" y2="563.411" stroke="#e74c3c" stroke-width="6.118" stroke-linecap="round"/>
+<text x="62.507" y="597.776" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="689.665" y="603.503" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="987.493" y="41.624" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="976.038" y="603.503" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">Q</text>
+<text x="987.493" y="858.376" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">M</text>
+<text x="726.893" y="389.807" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">P</text>
+<text x="984.629" y="364.033" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">H</text>
+<text x="923.279" y="200.173" font-size="14.630" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6.145">30°</text>
+</svg>

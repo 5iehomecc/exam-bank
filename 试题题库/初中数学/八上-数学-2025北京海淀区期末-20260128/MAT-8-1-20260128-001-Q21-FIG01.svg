@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 832" width="1600" height="832" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1600" height="832" fill="white"/>
+<line x1="800.000" y1="207.126" x2="90.628" y2="616.682" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="800.000" y1="207.126" x2="1509.372" y2="616.682" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="90.628" y1="616.682" x2="1509.372" y2="616.682" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="445.314" y1="411.904" x2="563.543" y2="616.682" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="800.000" y1="207.126" x2="563.543" y2="616.682" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<text x="800.000" y="186.649" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="66.055" y="637.160" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="1533.945" y="637.160" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="416.645" y="401.666" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="573.782" y="645.351" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+</svg>

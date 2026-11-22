@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="600" fill="white"/>
+<line x1="213.968" y1="166.411" x2="213.968" y2="438.956" stroke="black" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<line x1="213.968" y1="438.956" x2="686.032" y2="438.956" stroke="black" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<line x1="686.032" y1="438.956" x2="686.032" y2="166.411" stroke="black" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<line x1="686.032" y1="166.411" x2="213.968" y2="166.411" stroke="black" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<circle cx="450.000" cy="302.684" r="272.546" stroke="#9b59b6" stroke-width="1.995" fill="none" stroke-dasharray="9 6"/>
+<line x1="335.653" y1="166.411" x2="564.347" y2="438.956" stroke="#2e86de" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="213.968" y1="438.956" x2="356.784" y2="46.574" stroke="#555" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="213.968" y1="438.956" x2="625.189" y2="93.901" stroke="#555" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="356.784" y1="46.574" x2="625.189" y2="93.901" stroke="#e74c3c" stroke-width="3.990" stroke-linecap="butt"/>
+<text x="181.263" y="150.058" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="181.263" y="455.309" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="713.286" y="455.309" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="713.286" y="150.058" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="335.653" y="144.607" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">P</text>
+<text x="564.347" y="466.211" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">Q</text>
+<text x="417.295" y="308.134" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">O</text>
+<text x="378.588" y="24.771" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A′</text>
+<text x="657.895" y="99.352" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B′</text>
+</svg>

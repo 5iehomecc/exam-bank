@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 800" width="900" height="800" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="800" fill="white"/>
+<circle cx="450.000" cy="274.457" r="241.429" stroke="#9b59b6" stroke-width="1.995" fill="none" stroke-dasharray="9 6"/>
+<circle cx="570.715" cy="515.886" r="120.715" stroke="#2e86de" stroke-width="1.995" fill="none" stroke-dasharray="2 3"/>
+<line x1="208.571" y1="274.457" x2="691.429" y2="274.457" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="691.429" y1="274.457" x2="691.429" y2="757.315" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="691.429" y1="757.315" x2="208.571" y2="757.315" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="208.571" y1="757.315" x2="208.571" y2="274.457" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="223.131" y1="191.883" x2="208.571" y2="274.457" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="223.131" y1="191.883" x2="691.429" y2="274.457" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="223.131" y1="191.883" x2="208.571" y2="757.315" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="223.131" y1="191.883" x2="691.429" y2="757.315" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="223.131" y1="191.883" x2="457.280" y2="474.599" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<text x="194.085" y="267.214" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="705.915" y="267.214" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="194.085" y="766.972" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="705.915" y="766.972" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="208.645" y="184.640" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="471.766" y="472.185" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+<text x="582.786" y="525.543" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">O₂</text>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1000" height="600" fill="white"/>
+<circle cx="634.148" cy="302.618" r="261.752" stroke="#9b59b6" stroke-width="1.995" fill="none" stroke-dasharray="9 6"/>
+<line x1="110.645" y1="302.618" x2="503.272" y2="302.618" stroke="#333" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="634.148" y1="40.866" x2="110.645" y2="302.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="634.148" y1="40.866" x2="372.396" y2="302.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="634.148" y1="40.866" x2="503.272" y2="302.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="503.272" y1="171.742" x2="503.272" y2="302.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="503.272" y1="171.742" x2="372.396" y2="302.618" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="634.148" y1="40.866" x2="503.272" y2="171.742" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="257.225" y1="229.327" x2="634.148" y2="40.866" stroke="#555" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<text x="104.101" y="307.853" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="372.396" y="309.161" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="506.544" y="309.161" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="640.691" y="307.853" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C′</text>
+<text x="509.816" y="171.742" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="634.148" y="35.631" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">P</text>
+<text x="249.373" y="225.401" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B′</text>
+</svg>

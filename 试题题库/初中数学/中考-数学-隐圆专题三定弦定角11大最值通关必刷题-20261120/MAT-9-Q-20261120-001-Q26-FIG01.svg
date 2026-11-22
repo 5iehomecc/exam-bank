@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700" width="900" height="700" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="700" fill="white"/>
+<line x1="246.070" y1="388.224" x2="652.264" y2="388.224" stroke="#666666" stroke-width="1.596" stroke-linecap="butt"/>
+<line x1="371.053" y1="513.207" x2="371.053" y2="28.899" stroke="#666666" stroke-width="1.596" stroke-linecap="butt"/>
+<path d="M 292.939 388.224 L 298.235 367.400 L 303.531 347.294 L 308.827 327.905 L 314.122 309.235 L 319.418 291.283 L 324.714 274.049 L 330.010 257.533 L 335.306 241.735 L 340.602 226.655 L 345.898 212.294 L 351.194 198.650 L 356.489 185.724 L 361.785 173.517 L 367.081 162.028 L 372.377 151.256 L 377.673 141.203 L 382.969 131.868 L 388.265 123.251 L 393.561 115.352 L 398.856 108.171 L 404.152 101.708 L 409.448 95.964 L 414.744 90.937 L 420.040 86.629 L 425.336 83.038 L 430.632 80.166 L 435.928 78.012 L 441.223 76.575 L 446.519 75.857 L 451.815 75.857 L 457.111 76.575 L 462.407 78.012 L 467.703 80.166 L 472.999 83.038 L 478.295 86.629 L 483.590 90.937 L 488.886 95.964 L 494.182 101.708 L 499.478 108.171 L 504.774 115.352 L 510.070 123.251 L 515.366 131.868 L 520.662 141.203 L 525.958 151.256 L 531.253 162.028 L 536.549 173.517 L 541.845 185.724 L 547.141 198.650 L 552.437 212.294 L 557.733 226.655 L 563.029 241.735 L 568.325 257.533 L 573.620 274.049 L 578.916 291.283 L 584.212 309.235 L 589.508 327.905 L 594.804 347.294 L 600.100 367.400 L 605.396 388.224" fill="none" stroke="black" stroke-width="1.995" stroke-linejoin="round"/>
+<circle cx="488.224" cy="505.396" r="165.705" stroke="#9b59b6" stroke-width="1.995" fill="none" stroke-dasharray="9 6"/>
+<line x1="605.396" y1="388.224" x2="488.224" y2="185.278" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="488.224" y1="185.278" x2="488.224" y2="388.224" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="605.396" y1="388.224" x2="531.112" y2="345.337" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="488.224" y1="185.278" x2="531.112" y2="345.337" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<path d="M 488.224 384.709 L 491.740 384.709 L 491.740 388.224" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="610.083" y="397.598" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="286.690" y="397.598" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="364.804" y="149.976" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="453.854" y="71.862" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">M</text>
+<text x="492.911" y="181.372" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="488.224" y="397.598" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">G</text>
+<text x="537.361" y="343.774" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">I</text>
+</svg>

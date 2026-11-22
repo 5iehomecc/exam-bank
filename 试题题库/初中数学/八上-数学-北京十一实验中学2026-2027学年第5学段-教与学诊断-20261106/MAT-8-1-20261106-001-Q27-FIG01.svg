@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 975" width="1200" height="975" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1200" height="975" fill="white"/>
+<line x1="369.352" y1="82.317" x2="166.524" y2="639.583" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="166.524" y1="639.583" x2="1033.476" y2="639.583" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1033.476" y1="639.583" x2="369.352" y2="82.317" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="369.352" y1="82.317" x2="825.890" y2="884.013" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1033.476" y1="639.583" x2="825.890" y2="884.013" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="166.524" y1="639.583" x2="825.890" y2="884.013" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1033.476" y1="639.583" x2="771.614" y2="788.704" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1033.476" y1="639.583" x2="717.339" y2="693.394" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<line x1="779.918" y1="847.084" x2="817.586" y2="825.633" stroke="black" stroke-width="2.128" stroke-linecap="butt"/>
+<line x1="763.310" y1="730.323" x2="725.642" y2="751.774" stroke="black" stroke-width="2.128" stroke-linecap="butt"/>
+<path d="M 788.565 779.051 L 798.218 796.001 L 781.267 805.654" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<line x1="825.890" y1="884.013" x2="369.352" y2="82.317" stroke="#e74c3c" stroke-width="5.586" stroke-linecap="round"/>
+<line x1="825.890" y1="884.013" x2="166.524" y2="639.583" stroke="#2e86de" stroke-width="5.586" stroke-linecap="round"/>
+<line x1="825.890" y1="884.013" x2="771.614" y2="788.704" stroke="#27ae60" stroke-width="5.586" stroke-linecap="round"/>
+<text x="360.683" y="43.304" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="118.842" y="630.913" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="1081.158" y="639.583" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="717.038" y="596.235" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">P</text>
+<text x="834.559" y="931.696" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="715.262" y="801.708" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="669.656" y="684.724" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">G</text>
+</svg>
