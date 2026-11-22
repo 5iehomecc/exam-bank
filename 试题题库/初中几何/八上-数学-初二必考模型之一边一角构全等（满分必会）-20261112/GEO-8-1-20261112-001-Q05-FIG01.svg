@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1120" width="1440" height="1120" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1440" height="1120" fill="white"/>
+<line x1="116.339" y1="975.711" x2="938.076" y2="975.711" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="116.339" y1="975.711" x2="748.445" y2="343.605" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="748.445" y1="343.605" x2="1117.850" y2="100.042" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1117.850" y1="100.042" x2="938.076" y2="975.711" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="748.445" y1="343.605" x2="938.076" y2="975.711" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="938.076" y1="975.711" x2="1380.550" y2="975.711" stroke="#666666" stroke-width="2.394" stroke-dasharray="6 5" stroke-linecap="butt"/>
+<line x1="748.445" y1="343.605" x2="1380.550" y2="975.711" stroke="#2e86de" stroke-width="2.394" stroke-dasharray="5 4" stroke-linecap="butt"/>
+<text x="59.450" y="1023.119" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="938.076" y="1045.243" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="701.037" y="296.197" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="1174.739" y="74.757" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="1380.550" y="1045.243" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1120" width="1440" height="1120" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1440" height="1120" fill="white"/>
+<line x1="87.894" y1="872.892" x2="720.000" y2="240.787" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="1352.106" y1="872.892" x2="720.000" y2="240.787" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="87.894" y1="872.892" x2="1352.106" y2="872.892" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="482.960" y1="872.892" x2="1004.448" y2="525.234" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="720.000" y1="240.787" x2="938.806" y2="568.995" stroke="#2e86de" stroke-width="2.394" stroke-dasharray="5 4" stroke-linecap="butt"/>
+<path d="M 916.891 536.124 L 884.020 558.038 L 905.934 590.910" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="59.450" y="888.695" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="1380.550" y="888.695" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="720.000" y="212.342" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="482.960" y="907.658" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="1032.892" y="517.333" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="962.510" y="587.959" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">H</text>
+</svg>

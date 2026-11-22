@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="900" fill="white"/>
+<line x1="427.500" y1="337.500" x2="157.500" y2="607.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="157.500" y1="607.500" x2="697.500" y2="607.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="697.500" y1="607.500" x2="427.500" y2="337.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="157.500" y1="607.500" x2="742.500" y2="292.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="427.500" y1="337.500" x2="572.885" y2="607.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="572.885" y1="607.500" x2="742.500" y2="292.500" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="508.500" y1="418.500" x2="742.500" y2="292.500" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<line x1="616.500" y1="526.500" x2="742.500" y2="292.500" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<path d="M 471.933 420.018 L 486.020 412.432 L 493.606 426.520" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="412.714" y="316.114" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">A</text>
+<text x="132.956" y="616.078" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">B</text>
+<text x="718.335" y="623.053" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">C</text>
+<text x="511.843" y="392.716" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">D</text>
+<text x="642.416" y="528.593" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">M</text>
+<text x="581.910" y="631.883" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">F</text>
+<text x="455.326" y="424.581" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">E</text>
+<text x="762.228" y="275.565" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">P</text>
+</svg>

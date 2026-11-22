@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 900" width="1000" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1000" height="900" fill="white"/>
+<line x1="92.971" y1="42.971" x2="92.971" y2="857.029" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="92.971" y1="857.029" x2="907.029" y2="857.029" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="92.971" y1="42.971" x2="907.029" y2="857.029" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="907.029" y1="857.029" x2="92.971" y2="682.588" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="92.971" y1="682.588" x2="619.715" y2="569.715" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="619.715" y1="569.715" x2="558.147" y2="857.029" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="619.715" y1="569.715" x2="92.971" y2="569.715" stroke="#9b59b6" stroke-width="2.4" stroke-dasharray="7 5"/>
+<path d="M 92.971 557.150 L 105.536 557.150 L 105.536 569.715" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<line x1="92.971" y1="42.971" x2="92.971" y2="682.588" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<line x1="92.971" y1="857.029" x2="558.147" y2="857.029" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<path d="M 92.971 854.413 L 95.587 854.413 L 95.587 857.029" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="92.971" y="37.156" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="912.844" y="857.029" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="87.156" y="861.681" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="87.156" y="682.588" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="625.529" y="566.226" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="558.147" y="862.844" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+<text x="578.116" y="780.899" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">N</text>
+<text x="87.156" y="569.715" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">G</text>
+</svg>

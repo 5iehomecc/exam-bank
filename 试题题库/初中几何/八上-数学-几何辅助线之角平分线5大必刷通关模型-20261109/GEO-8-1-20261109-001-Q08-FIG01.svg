@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 459" width="700" height="459" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="700" height="459" fill="white"/>
+<line x1="171.012" y1="45.022" x2="40.629" y2="403.248" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="40.629" y1="403.248" x2="656.439" y2="403.248" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="171.012" y1="45.022" x2="656.439" y2="403.248" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="40.629" y1="403.248" x2="296.428" y2="224.135" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="171.012" y1="45.022" x2="296.428" y2="224.135" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="296.428" y1="224.135" x2="656.439" y2="403.248" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="296.428" y1="224.135" x2="421.844" y2="403.248" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<path d="M 292.644 218.730 L 287.239 222.515 L 291.024 227.920" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="156.350" y="33.293" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="28.899" y="420.843" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="671.101" y="420.843" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="289.097" y="206.541" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="421.844" y="426.707" font-size="17.290" fill="#9b59b6" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+</svg>

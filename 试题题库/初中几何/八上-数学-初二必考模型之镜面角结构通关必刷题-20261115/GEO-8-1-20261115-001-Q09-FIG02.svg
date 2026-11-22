@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="900" fill="white"/>
+<line x1="144.0" y1="144.0" x2="144.0" y2="756.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="144.0" y1="756.0" x2="756.0" y2="756.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="756.0" y1="756.0" x2="144.0" y2="144.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="756.0" y1="756.0" x2="144.0" y2="450.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="144.0" y1="450.0" x2="348.0" y2="348.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="348.0" y1="348.0" x2="144.0" y2="756.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="144.0" y1="144.0" x2="144.0" y2="450.0" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<line x1="144.0" y1="450.0" x2="144.0" y2="756.0" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<path d="M 144.0 740.0 L 160.0 740.0 L 160.0 756.0" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M 273.555 496.889 L 259.245 489.734 L 252.089 504.045" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="131.767" y="116.608" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">A</text>
+<text x="782.011" y="770.947" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">B</text>
+<text x="128.614" y="781.754" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">C</text>
+<text x="357.0" y="319.5" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">E</text>
+<text x="114.0" y="450.0" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">D</text>
+<text x="294.9" y="502.2" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">N</text>
+</svg>

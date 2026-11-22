@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 500" width="700" height="500" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="700" height="500" fill="white"/>
+<line x1="40.792" y1="404.604" x2="302.429" y2="95.396" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="302.429" y1="95.396" x2="659.208" y2="404.604" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="40.792" y1="404.604" x2="659.208" y2="404.604" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="40.792" y1="404.604" x2="480.819" y2="250.000" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="302.429" y1="95.396" x2="370.383" y2="288.802" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="370.383" y1="288.802" x2="411.070" y2="404.604" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="2 3" stroke-linecap="butt"/>
+<path d="M 368.609 283.753 L 363.560 285.527 L 365.334 290.576" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="28.899" y="418.875" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="302.429" y="81.125" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="671.101" y="418.875" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="492.712" y="255.946" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="356.112" y="300.694" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="422.963" y="402.226" font-size="17.290" fill="#9b59b6" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+</svg>

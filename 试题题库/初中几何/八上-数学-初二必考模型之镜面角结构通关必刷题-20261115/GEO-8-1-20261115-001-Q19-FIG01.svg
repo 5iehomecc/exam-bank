@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="900" fill="white"/>
+<line data-seg="XAXIS" x1="60.0" y1="760.0" x2="860.0" y2="760.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="YAXIS" x1="220.0" y1="880.0" x2="220.0" y2="80.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<path d="M 848 753 L 860 760 L 848 767" fill="none" stroke="#1a1a1a" stroke-width="2.4"/>
+<path d="M 213 92 L 220 80 L 227 92" fill="none" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="OA" x1="220.0" y1="760.0" x2="220.0" y2="240.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="OB" x1="220.0" y1="760.0" x2="740.0" y2="760.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="AB" x1="220.0" y1="240.0" x2="740.0" y2="760.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="EB" x1="220.0" y1="500.0" x2="740.0" y2="760.0" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="ED" x1="220.0" y1="500.0" x2="393.3" y2="413.3" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="OD" x1="220.0" y1="760.0" x2="393.3" y2="413.3" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="DP" x1="393.3" y1="413.3" x2="393.3" y2="586.7" stroke="#1a1a1a" stroke-width="2.4"/>
+<line data-seg="OD" x1="220.0" y1="760.0" x2="393.3" y2="413.3" stroke="#e74c3c" stroke-width="6"/>
+<line data-seg="BE" x1="740.0" y1="760.0" x2="220.0" y2="500.0" stroke="#e74c3c" stroke-width="6"/>
+<path d="M 333.8 532.3 L 353.5 542.2 L 343.7 561.8" fill="none" stroke="#4c4c4c" stroke-width="2.4" stroke-linejoin="round"/>
+<text x="196.0" y="222.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">A</text>
+<text x="764.0" y="778.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">B</text>
+<text x="405.3" y="381.3" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">D</text>
+<text x="192.0" y="496.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">E</text>
+<text x="408.3" y="558.7" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">P</text>
+<text x="295.0" y="562.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">K</text>
+<text x="200.0" y="784.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">O</text>
+<text x="852.0" y="790.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">x</text>
+<text x="250.0" y="88.0" font-size="38" fill="#1a1a1a" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="6">y</text>
+</svg>

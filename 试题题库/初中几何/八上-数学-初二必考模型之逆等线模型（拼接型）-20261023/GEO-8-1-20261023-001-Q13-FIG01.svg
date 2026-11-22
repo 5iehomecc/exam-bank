@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="800" height="600" fill="white"/>
+<line x1="66.389" y1="466.806" x2="733.611" y2="466.806" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="733.611" y1="466.806" x2="400.000" y2="133.194" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="400.000" y1="133.194" x2="66.389" y2="466.806" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="66.389" y1="466.806" x2="522.110" y2="344.695" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="733.611" y1="466.806" x2="522.110" y2="344.695" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="400.000" y1="133.194" x2="522.110" y2="344.695" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="522.110" y1="344.695" x2="310.609" y2="466.806" stroke="#2e86de" stroke-width="2.394" stroke-dasharray="5 4" stroke-linecap="butt"/>
+<path d="M 381.128 152.066 L 400.000 170.938 L 418.872 152.066" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<text x="33.028" y="493.495" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="766.972" y="493.495" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="400.000" y="99.833" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="548.799" y="324.679" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="310.609" y="500.167" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+</svg>

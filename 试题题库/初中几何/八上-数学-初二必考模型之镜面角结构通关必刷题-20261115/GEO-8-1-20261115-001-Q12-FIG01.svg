@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="900" height="900" fill="white"/>
+<line x1="158.353" y1="741.647" x2="793.882" y2="741.647" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="158.353" y1="741.647" x2="158.353" y2="106.118" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="680.706" y1="741.647" x2="158.353" y2="219.294" stroke="#1a1a1a" stroke-width="2.4"/>
+<line x1="680.706" y1="741.647" x2="680.706" y2="480.471" stroke="#1a1a1a" stroke-width="2.4"/>
+<polygon points="806.94,730.33 806.94,752.96 780.82,741.65" fill="#1a1a1a"/>
+<polygon points="147.04,93.06 169.67,93.06 158.35,119.18" fill="#1a1a1a"/>
+<line x1="288.941" y1="349.882" x2="288.941" y2="741.647" stroke="#9b59b6" stroke-width="2.4" stroke-dasharray="7 5"/>
+<line x1="288.941" y1="349.882" x2="680.706" y2="349.882" stroke="#9b59b6" stroke-width="2.4" stroke-dasharray="7 5"/>
+<line x1="680.706" y1="480.471" x2="680.706" y2="349.882" stroke="#9b59b6" stroke-width="2.4" stroke-dasharray="7 5"/>
+<line x1="288.941" y1="349.882" x2="680.706" y2="480.471" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<line x1="158.353" y1="741.647" x2="288.941" y2="349.882" stroke="#e74c3c" stroke-width="6" stroke-linecap="round"/>
+<path d="M 288.941 717.271 L 313.318 717.271 L 313.318 741.647" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M 656.329 349.882 L 656.329 374.259 L 680.706 374.259" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<path d="M 281.233 373.008 L 304.358 380.716 L 312.067 357.591" fill="none" stroke="#4c4c4c" stroke-width="1.6" stroke-linejoin="round"/>
+<text x="119.176" y="780.824" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">O</text>
+<text x="680.706" y="789.529" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">A</text>
+<text x="114.824" y="201.882" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">B</text>
+<text x="228.000" y="323.765" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">P</text>
+<text x="741.647" y="519.647" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">Q</text>
+<text x="288.941" y="789.529" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">M</text>
+<text x="732.941" y="330.729" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">N</text>
+<text x="798.235" y="778.212" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">x</text>
+<text x="121.788" y="101.765" font-size="38" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8">y</text>
+</svg>
