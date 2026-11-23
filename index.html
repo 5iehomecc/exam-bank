@@ -781,9 +781,21 @@ function splitCallouts(text){
   if(buf.length) segs.push({type:"md", text:buf.join("\n")});
   return segs;
 }
+// 把 $...$ / $$...$$ 公式段先抽离为占位符，避免 marked 的反斜杠转义压坏 LaTeX（\\、\{ 等），
+// marked 解析完成后再原样还原，最后交 MathJax 排版。
+function isolateMath(md){
+  const store = [];
+  let out = md.replace(/\$\$[\s\S]*?\$\$/g, m => { store.push(m); return `@@M${store.length-1}@@`; });
+  out = out.replace(/\$[^$\n]*\$/g, m => { store.push(m); return `@@M${store.length-1}@@`; });
+  return { out, store };
+}
 function renderMD(text, dir){
   marked.setOptions({gfm:true, breaks:true});
-  return marked.parse(preprocess(text, dir));
+  const pre = preprocess(text, dir);
+  const { out, store } = isolateMath(pre);
+  let html = marked.parse(out);
+  html = html.replace(/@@M(\d+)@@/g, (m, i) => store[+i]);
+  return html;
 }
 
 // 试题配图大多是 200~400px 的裁图，按 2 倍放大铺到栏内更好看清；

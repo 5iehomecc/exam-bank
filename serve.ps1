@@ -422,7 +422,7 @@ function Serve-Request {
             Send-Response $stream 404 'text/plain; charset=utf-8' $null 'no-store' $headOnly
             return
         }
-        Send-Response $stream 200 (Get-MimeType $file) ([IO.File]::ReadAllBytes($file)) 'max-age=3600' $headOnly
+        Send-Response $stream 200 (Get-MimeType $file) ([IO.File]::ReadAllBytes($file)) 'no-store' $headOnly
         return
     }
 

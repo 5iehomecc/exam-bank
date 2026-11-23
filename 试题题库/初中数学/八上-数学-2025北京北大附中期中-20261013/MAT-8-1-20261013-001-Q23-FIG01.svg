@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 960" width="1320" height="960" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1320" height="960" fill="white"/>
+<line x1="123.173" y1="842.358" x2="123.173" y2="75.463" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="123.173" y1="842.358" x2="429.931" y2="842.358" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="429.931" y1="842.358" x2="123.173" y2="75.463" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="429.931" y1="842.358" x2="123.173" y2="535.600" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="123.173" y1="535.600" x2="1196.827" y2="535.600" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="429.931" y1="842.358" x2="1196.827" y2="535.600" stroke="black" stroke-width="2.394" stroke-linecap="butt"/>
+<line x1="429.931" y1="842.358" x2="429.931" y2="535.600" stroke="#9b59b6" stroke-width="2.926" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<path d="M 161.518 842.358 L 161.518 804.013 L 123.173 804.013" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<path d="M 429.931 573.945 L 391.587 573.945 L 391.587 535.600" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<path d="M 123.173 612.290 L 124.698 612.274 L 126.222 612.229 L 127.745 612.153 L 129.266 612.047 L 130.785 611.911 L 132.300 611.744 L 133.813 611.548 L 135.321 611.321 L 136.824 611.065 L 138.321 610.779 L 139.813 610.462 L 141.298 610.117 L 142.776 609.742 L 144.246 609.337 L 145.708 608.904 L 147.161 608.441 L 148.605 607.950 L 150.038 607.430 L 151.461 606.882 L 152.873 606.305 L 154.273 605.701 L 155.660 605.068 L 157.035 604.409 L 158.396 603.722 L 159.744 603.008 L 161.077 602.268 L 162.395 601.501 L 163.697 600.708 L 164.984 599.890 L 166.254 599.046 L 167.507 598.176 L 168.742 597.283 L 169.959 596.364 L 171.158 595.422 L 172.338 594.456 L 173.499 593.467 L 174.639 592.455 L 175.760 591.421 L 176.859 590.364 L 177.937 589.286 L 178.994 588.186 L 180.028 587.066 L 181.040 585.926 L 182.029 584.765 L 182.995 583.585 L 183.938 582.386 L 184.856 581.169 L 185.750 579.934 L 186.619 578.681 L 187.463 577.411 L 188.281 576.124 L 189.074 574.822 L 189.841 573.504 L 190.581 572.171 L 191.295 570.823 L 191.982 569.462 L 192.642 568.087 L 193.274 566.699 L 193.878 565.300 L 194.455 563.888 L 195.003 562.465 L 195.523 561.032 L 196.014 559.588 L 196.477 558.135 L 196.910 556.673 L 197.315 555.203 L 197.690 553.725 L 198.036 552.240 L 198.352 550.748 L 198.638 549.251 L 198.894 547.747 L 199.121 546.240 L 199.317 544.727 L 199.484 543.212 L 199.620 541.693 L 199.726 540.172 L 199.802 538.649 L 199.847 537.125 L 199.863 535.600" fill="none" stroke="dimgray" stroke-width="2.261" stroke-linejoin="round"/>
+<line x1="123.173" y1="842.358" x2="123.173" y2="535.600" stroke="#27ae60" stroke-width="6.118" stroke-linecap="round"/>
+<line x1="123.173" y1="535.600" x2="429.931" y2="535.600" stroke="#27ae60" stroke-width="6.118" stroke-linecap="round"/>
+<line x1="429.931" y1="535.600" x2="1196.827" y2="535.600" stroke="#e74c3c" stroke-width="6.118" stroke-linecap="round"/>
+<text x="445.269" y="907.544" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">A</text>
+<text x="80.994" y="52.456" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">B</text>
+<text x="80.994" y="888.372" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">C</text>
+<text x="77.159" y="535.600" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">D</text>
+<text x="1242.841" y="535.600" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">E</text>
+<text x="429.931" y="478.083" font-size="17.290" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="7.262">F</text>
+<circle cx="429.931" cy="535.600" r="6.902" stroke="black" stroke-width="0.000" fill="black"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1274 1222" width="1274" height="1222" font-family="sans-serif, 'Microsoft YaHei','SimHei',sans-serif">
+<rect x="0" y="0" width="1274" height="1222" fill="white"/>
+<line x1="590.404" y1="147.752" x2="247.851" y2="490.305" stroke="black" stroke-width="2.527" stroke-linecap="butt"/>
+<line x1="247.851" y1="490.305" x2="590.404" y2="490.305" stroke="black" stroke-width="2.527" stroke-linecap="butt"/>
+<line x1="590.404" y1="490.305" x2="1183.723" y2="490.305" stroke="black" stroke-width="2.128" stroke-linecap="butt"/>
+<line x1="590.404" y1="490.305" x2="590.404" y2="147.752" stroke="black" stroke-width="2.527" stroke-linecap="butt"/>
+<line x1="590.404" y1="147.752" x2="59.447" y2="1067.396" stroke="black" stroke-width="2.128" stroke-linecap="butt"/>
+<path d="M 571.564 490.305 L 571.564 471.465 L 590.404 471.465" fill="none" stroke="#4c4c4c" stroke-width="1.596" stroke-linejoin="round"/>
+<line x1="590.404" y1="147.752" x2="1183.723" y2="490.305" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<line x1="247.851" y1="741.071" x2="498.617" y2="490.305" stroke="#9b59b6" stroke-width="2.394" stroke-dasharray="9 6" stroke-linecap="butt"/>
+<path d="M 454.086 490.305 L 454.088 490.748 L 454.094 491.191 L 454.105 491.633 L 454.121 492.076 L 454.141 492.518 L 454.165 492.960 L 454.193 493.402 L 454.226 493.843 L 454.264 494.284 L 454.305 494.725 L 454.352 495.165 L 454.402 495.605 L 454.457 496.045 L 454.516 496.483 L 454.580 496.921 L 454.648 497.359 L 454.720 497.796 L 454.797 498.232 L 454.878 498.667 L 454.963 499.101 L 455.053 499.535 L 455.146 499.968 L 455.245 500.399 L 455.347 500.830 L 455.454 501.260 L 455.565 501.688 L 455.680 502.116 L 455.800 502.542 L 455.924 502.967 L 456.052 503.391 L 456.184 503.813 L 456.320 504.235 L 456.461 504.654 L 456.605 505.073 L 456.754 505.490 L 456.907 505.905 L 457.065 506.319 L 457.226 506.731 L 457.391 507.142 L 457.561 507.551 L 457.734 507.958 L 457.912 508.364 L 458.093 508.768 L 458.279 509.170 L 458.468 509.570 L 458.662 509.968 L 458.859 510.364 L 459.061 510.759 L 459.266 511.151 L 459.475 511.541 L 459.688 511.929 L 459.905 512.315 L 460.126 512.699 L 460.350 513.080 L 460.579 513.460 L 460.811 513.837 L 461.046 514.211 L 461.286 514.584 L 461.529 514.954 L 461.776 515.321 L 462.027 515.686 L 462.281 516.049 L 462.538 516.409 L 462.800 516.766 L 463.065 517.121 L 463.333 517.473 L 463.605 517.822 L 463.880 518.169 L 464.159 518.513 L 464.441 518.854 L 464.726 519.193 L 465.015 519.528 L 465.307 519.861 L 465.603 520.190 L 465.902 520.517 L 466.204 520.841 L 466.509 521.162 L 466.817 521.479 L 467.129 521.794" fill="none" stroke="dimgray" stroke-width="2.261" stroke-linejoin="round"/>
+<line x1="590.404" y1="147.752" x2="247.851" y2="741.071" stroke="#e74c3c" stroke-width="5.586" stroke-linecap="butt"/>
+<line x1="247.851" y1="490.305" x2="247.851" y2="741.071" stroke="#2e86de" stroke-width="5.586" stroke-linecap="butt"/>
+<line x1="247.851" y1="490.305" x2="498.617" y2="490.305" stroke="#2e86de" stroke-width="5.586" stroke-linecap="butt"/>
+<text x="428.992" y="519.145" font-size="21.280" fill="#595959" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="8.938">45°</text>
+<text x="624.659" y="110.072" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">A</text>
+<text x="210.171" y="521.135" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">B</text>
+<text x="634.936" y="524.560" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">C</text>
+<text x="1221.404" y="524.560" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">D</text>
+<text x="288.958" y="747.922" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">E</text>
+<text x="519.171" y="442.348" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">F</text>
+<text x="52.596" y="1111.928" font-size="25.270" fill="black" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="10.613">M</text>
+<text x="881.574" y="593.071" font-size="22.610" fill="#e74c3c" text-anchor="middle" dominant-baseline="central" style="paint-order:stroke" stroke="white" stroke-width="9.496">DF = 2BC</text>
+</svg>
