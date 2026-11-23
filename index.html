@@ -291,6 +291,21 @@ details.ans[open] summary::before{transform:rotate(90deg)}
 .ans-body{padding:4px 14px 14px;border-top:1px solid var(--ans-top-line)}
 .wl{color:var(--accent-ink-2);border-bottom:1px dashed var(--wl-line)}
 .formula-fail{color:var(--danger)}
+/* 配图悬浮窗：多图并存、可拖动、可改尺寸、滚轮缩放 */
+.imgpop{position:fixed;display:flex;flex-direction:column;min-width:0;background:var(--panel);
+  border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 50px var(--shadow-2);
+  z-index:1000;overflow:hidden}
+.imgpop-bar{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--line-soft);
+  background:var(--panel2);cursor:move;user-select:none;flex:0 0 auto}
+.imgpop-title{flex:1;min-width:0;font-size:12px;color:var(--txt-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.imgpop-zoom{font-family:Consolas,monospace;font-size:11px;color:var(--dim2);min-width:48px;text-align:right}
+.imgpop-btn{flex:0 0 auto;border:1px solid var(--line);background:var(--input-bg);color:var(--txt-3);
+  border-radius:6px;width:24px;height:22px;font-size:12px;cursor:pointer;line-height:1;padding:0}
+.imgpop-btn:hover{border-color:var(--accent);color:var(--accent-ink)}
+.imgpop-stage{flex:1;min-height:0;overflow:auto;display:flex;padding:12px;background:#fff}
+.imgpop-stage img{margin:auto;max-width:none;user-select:none;-webkit-user-drag:none}
+.imgpop-resize{position:absolute;right:0;bottom:0;width:18px;height:18px;cursor:nwse-resize;
+  background:linear-gradient(135deg,transparent 55%,var(--dim3) 55%);opacity:.6}
 ::-webkit-scrollbar{width:9px;height:9px}
 @media (max-width:1180px){
   main{grid-template-columns:240px minmax(0,1fr)}
@@ -811,9 +826,9 @@ function renderMD(text, dir){
   return html;
 }
 
-// 试题配图大多是 200~400px 的裁图，按 2 倍放大铺到栏内更好看清；
-// 原图更大时只缩放到栏宽。点击图片可打开原始文件。
-const IMG_SCALE = 2;
+// 栏内配图保持克制：按 1.3 倍铺到栏宽内，避免未点开时图过大；
+// 点击图片弹出独立悬浮窗，可拖动、改尺寸、滚轮缩放对照题目与解答。
+const IMG_SCALE = 1.3;
 function fitImages(){
   const body = document.querySelector(".detail-body");
   if(!body) return;
@@ -821,7 +836,7 @@ function fitImages(){
   document.querySelectorAll("#md img").forEach(img => {
     if(!img.dataset.zoom){
       img.dataset.zoom = "1";
-      img.addEventListener("click", () => window.open(img.src, "_blank"));
+      img.addEventListener("click", () => openImgPop(img.src, img.alt));
     }
     const apply = () => {
       const nw = img.naturalWidth || 0;
@@ -834,6 +849,116 @@ function fitImages(){
     else img.addEventListener("load", apply, { once:true });
   });
 }
+
+/* ---------- 配图悬浮窗：多图并存 / 拖动 / 改尺寸 / 滚轮缩放 ---------- */
+const pops = [];
+let popZ = 1000, popCount = 0;
+const POP_MIN = { w: 260, h: 180 };
+const POP_ZOOM_MIN = 0.25, POP_ZOOM_MAX = 6;
+
+function openImgPop(src, alt){
+  if(!src) return;
+  const win = document.createElement("div");
+  win.className = "imgpop";
+  const rawName = decodeURIComponent(String(src).split("/").pop() || alt || "");
+  const title = (rawName || "配图").split("?")[0];
+  win.innerHTML = `
+    <div class="imgpop-bar">
+      <span class="imgpop-title" title="${esc(title)}">${esc(title)}</span>
+      <span class="imgpop-zoom">100%</span>
+      <button class="imgpop-btn imgpop-fit" title="适应窗口">⤢</button>
+      <button class="imgpop-btn imgpop-close" title="关闭（Esc）">✕</button>
+    </div>
+    <div class="imgpop-stage"><img src="${esc(src)}" alt="${esc(alt||"")}" draggable="false"></div>
+    <div class="imgpop-resize"></div>`;
+  document.body.appendChild(win);
+  pops.push(win);
+
+  const stage = win.querySelector(".imgpop-stage");
+  const img = win.querySelector("img");
+  const zoomEl = win.querySelector(".imgpop-zoom");
+  let scale = 1, nw = 0, nh = 0;
+
+  const clampScale = s => Math.min(POP_ZOOM_MAX, Math.max(POP_ZOOM_MIN, s));
+  const applyScale = () => {
+    if(nw) img.style.width = Math.round(nw * scale) + "px";
+    img.style.height = "auto";
+    zoomEl.textContent = Math.round(scale * 100) + "%";
+  };
+  const fitToStage = () => {
+    if(!nw || !nh) return;
+    const sw = stage.clientWidth - 24, sh = stage.clientHeight - 24;
+    if(sw <= 0 || sh <= 0) return;
+    scale = clampScale(Math.min(sw / nw, sh / nh, 1));
+    applyScale();
+  };
+  const placeInitial = () => {
+    nw = img.naturalWidth || 0; nh = img.naturalHeight || 0;
+    const vw = window.innerWidth, vh = window.innerHeight, pad = 24;
+    let w = Math.min(vw * 0.6, (nw || 480) + 20, vw - pad);
+    let h = Math.min(vh * 0.62, (nh || 360) + 54, vh - pad);
+    w = Math.max(POP_MIN.w, w); h = Math.max(POP_MIN.h, h);
+    win.style.width = w + "px"; win.style.height = h + "px";
+    const n = popCount++;
+    const left = Math.min(Math.max(20, Math.round(60 + n * 28)), Math.max(20, vw - w - 20));
+    const top = Math.min(Math.max(20, Math.round(50 + n * 28)), Math.max(20, vh - h - 20));
+    win.style.left = left + "px"; win.style.top = top + "px";
+    requestAnimationFrame(fitToStage);
+  };
+
+  if(img.complete && img.naturalWidth) placeInitial();
+  else img.addEventListener("load", placeInitial, { once:true });
+
+  // 点击置顶
+  win.addEventListener("mousedown", () => { win.style.zIndex = ++popZ; });
+
+  // 标题栏拖动
+  win.querySelector(".imgpop-bar").addEventListener("mousedown", e => {
+    if(e.target.closest(".imgpop-btn")) return;
+    e.preventDefault();
+    const dx = e.clientX - win.offsetLeft, dy = e.clientY - win.offsetTop;
+    const move = ev => {
+      const l = Math.max(-win.offsetWidth + 80, Math.min(window.innerWidth - 80, ev.clientX - dx));
+      const t = Math.max(0, Math.min(window.innerHeight - 40, ev.clientY - dy));
+      win.style.left = l + "px"; win.style.top = t + "px";
+    };
+    const up = () => { document.removeEventListener("mousemove", move); document.removeEventListener("mouseup", up); };
+    document.addEventListener("mousemove", move); document.addEventListener("mouseup", up);
+  });
+
+  // 右下角拖拽改尺寸
+  win.querySelector(".imgpop-resize").addEventListener("mousedown", e => {
+    e.preventDefault(); e.stopPropagation();
+    const w0 = win.offsetWidth, h0 = win.offsetHeight, x0 = e.clientX, y0 = e.clientY;
+    const move = ev => {
+      win.style.width = Math.max(POP_MIN.w, w0 + ev.clientX - x0) + "px";
+      win.style.height = Math.max(POP_MIN.h, h0 + ev.clientY - y0) + "px";
+    };
+    const up = () => { document.removeEventListener("mousemove", move); document.removeEventListener("mouseup", up); };
+    document.addEventListener("mousemove", move); document.addEventListener("mouseup", up);
+  });
+
+  // 滚轮以图片中心为锚点缩放
+  stage.addEventListener("wheel", e => {
+    e.preventDefault();
+    const factor = e.deltaY < 0 ? 1.1 : 1 / 1.1;
+    scale = clampScale(scale * factor);
+    applyScale();
+  }, { passive:false });
+
+  // 双击复位到适应窗口
+  img.addEventListener("dblclick", fitToStage);
+  win.querySelector(".imgpop-fit").addEventListener("click", fitToStage);
+
+  const close = () => {
+    const i = pops.indexOf(win); if(i >= 0) pops.splice(i, 1);
+    win.remove();
+  };
+  win.querySelector(".imgpop-close").addEventListener("click", close);
+}
+document.addEventListener("keydown", e => {
+  if(e.key === "Escape" && pops.length){ const w = pops.pop(); w.remove(); }
+});
 let fitTimer = null;
 window.addEventListener("resize", () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitImages, 150); });
 async function openDetail(id, card){
