@@ -164,14 +164,44 @@ function Get-QBStemMarkdown {
         return $m.Groups[1].Value
     })
     $s = [regex]::Replace($s, '\[([^\]]*)\]\([^)]*\)', '$1')
-    $s = $s.Replace('\_', '_')
-    $s = Remove-QBTableMarks $s
-    $s = Convert-QBEntities $s
-    $s = [regex]::Replace($s, '(?m)^>\s*\[![^\]]*\][-+]?\s*', ' ')
-    $s = [regex]::Replace($s, '(?m)^>\s?', ' ')
+
+    # 按行内公式 $...$ 分段：数学段原样保留定界符 |、转义下划线 \_ 与 LaTeX 源码，
+    # 避免被表格竖线清洗 / 下划线归一误伤；仅正文段做 markdown 清洗。
+    $parts = [regex]::Split($s, '(\$[^$]*\$)')
+    $kept = New-Object System.Collections.ArrayList
+    foreach ($p in $parts) {
+        if ($null -eq $p) { continue }
+        $isMath = $p.Length -gt 1 -and $p.StartsWith('$') -and $p.EndsWith('$')
+        if ($isMath) {
+            [void]$kept.Add($p)
+            continue
+        }
+        $q = $p
+        $q = $q.Replace('\_', '_')
+        $q = Remove-QBTableMarks $q
+        $q = Convert-QBEntities $q
+        $q = [regex]::Replace($q, '(?m)^>\s*\[![^\]]*\][-+]?\s*', ' ')
+        $q = [regex]::Replace($q, '(?m)^>\s?', ' ')
+        [void]$kept.Add($q)
+    }
+    $s = ($kept -join '')
     $s = [regex]::Replace($s, '\s+', ' ').Trim()
     if ($s.Length -gt $Limit) {
         $s = $s.Substring(0, $Limit)
+        # 若截断点落在某个未闭合公式内部（花括号不配平 / 落在 _ ^ \ 上 / 下标上标后缺内容），
+        # 回退到该残缺公式之前，避免 MathJax 解析残缺 LaTeX 报错；闭括号之后的正文不动。
+        $lastDollar = $s.LastIndexOf('$')
+        if ($lastDollar -ge 0) {
+            $before = $s.Substring(0, $lastDollar)
+            $openCount = ([regex]::Matches($before, '(?<!\\)\$')).Count
+            if ($openCount % 2 -eq 0) {
+                $tail = $s.Substring($lastDollar + 1)
+                $ob = ([regex]::Matches($tail, '\{')).Count
+                $cb = ([regex]::Matches($tail, '\}')).Count
+                $incomplete = ($ob -ne $cb) -or ($tail -match '[\\_^]$') -or ($tail -match '[_^](?![{A-Za-z0-9\\])')
+                if ($incomplete) { $s = $s.Substring(0, $lastDollar).TrimEnd() }
+            }
+        }
         $dollars = ([regex]::Matches($s, '(?<!\\)\$')).Count
         if ($dollars % 2 -ne 0) { $s += '$' }
     }
