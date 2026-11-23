@@ -789,12 +789,14 @@ function isolateMath(md){
   out = out.replace(/\$[^$\n]*\$/g, m => { store.push(m); return `@@M${store.length-1}@@`; });
   return { out, store };
 }
+// 公式还原回 HTML 前转义 < > &，避免浏览器把公式里的 <y 之类当成 HTML 标签吞字
+function escMath(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function renderMD(text, dir){
   marked.setOptions({gfm:true, breaks:true});
   const pre = preprocess(text, dir);
   const { out, store } = isolateMath(pre);
   let html = marked.parse(out);
-  html = html.replace(/@@M(\d+)@@/g, (m, i) => store[+i]);
+  html = html.replace(/@@M(\d+)@@/g, (m, i) => escMath(store[+i]));
   return html;
 }
 

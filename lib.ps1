@@ -143,7 +143,7 @@ function Get-QBStemMarkdown {
         return $m.Groups[1].Value
     })
     $s = [regex]::Replace($s, '\[([^\]]*)\]\([^)]*\)', '$1')
-    $s = $s.Replace('\_', '＿')
+    $s = $s.Replace('\_', '_')
     $s = [regex]::Replace($s, '(?m)^>\s*\[![^\]]*\][-+]?\s*', ' ')
     $s = [regex]::Replace($s, '(?m)^>\s?', ' ')
     $s = [regex]::Replace($s, '\s+', ' ').Trim()
