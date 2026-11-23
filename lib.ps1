@@ -115,6 +115,25 @@ function Get-QBList {
     return @()
 }
 
+function Convert-QBEntities {
+    param([string]$s)
+    if ($null -eq $s) { return '' }
+    $s = [regex]::Replace($s, '&#x27;|&#39;', "'")
+    $s = [regex]::Replace($s, '&lt;', '<')
+    $s = [regex]::Replace($s, '&gt;', '>')
+    $s = [regex]::Replace($s, '&nbsp;', ' ')
+    $s = [regex]::Replace($s, '&amp;', '&')
+    return $s
+}
+
+function Remove-QBTableMarks {
+    param([string]$s)
+    if ($null -eq $s) { return '' }
+    $s = [regex]::Replace($s, '(?m)^\s*\|?[\s:|-]+\|[\s:|-]*\s*$', ' ')
+    $s = $s.Replace('|', ' ')
+    return $s
+}
+
 function Get-QBPlainText {
     param([string]$Md)
     $s = $Md
@@ -126,9 +145,11 @@ function Get-QBPlainText {
     })
     $s = [regex]::Replace($s, '\[([^\]]*)\]\([^)]*\)', '$1')
     $s = [regex]::Replace($s, '\$\$?(.+?)\$\$?', '$1', [Text.RegularExpressions.RegexOptions]::Singleline)
+    $s = Convert-QBEntities $s
+    $s = Remove-QBTableMarks $s
     $s = [regex]::Replace($s, '(?m)^>\s*\[![^\]]*\][-+]?\s*', ' ')
     $s = [regex]::Replace($s, '(?m)^>\s?', ' ')
-    $s = [regex]::Replace($s, '[#*_`>]', ' ')
+    $s = [regex]::Replace($s, '[#*_`>|]', ' ')
     $s = [regex]::Replace($s, '\s+', ' ')
     return $s.Trim()
 }
@@ -144,6 +165,8 @@ function Get-QBStemMarkdown {
     })
     $s = [regex]::Replace($s, '\[([^\]]*)\]\([^)]*\)', '$1')
     $s = $s.Replace('\_', '_')
+    $s = Remove-QBTableMarks $s
+    $s = Convert-QBEntities $s
     $s = [regex]::Replace($s, '(?m)^>\s*\[![^\]]*\][-+]?\s*', ' ')
     $s = [regex]::Replace($s, '(?m)^>\s?', ' ')
     $s = [regex]::Replace($s, '\s+', ' ').Trim()
