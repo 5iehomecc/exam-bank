@@ -495,11 +495,13 @@ function New-QBIndex {
     $generatedAt = (Get-Date).ToString('yyyy-MM-dd HH:mm:ss')
     $elapsedMs = [int]$sw.ElapsedMilliseconds
 
+    # meta 不写本机绝对路径：vault 只存库名，source 只存题库层名（相对库根），
+    # 供服务端判断「这份索引是不是别的题库建的」，随仓库分享时不泄露本机路径。
     $meta = [ordered]@{
         version        = $version
         generatedAt    = $generatedAt
-        vault          = $Vault
-        source         = $rootFull
+        vault          = (Split-Path -Leaf $vaultFull)
+        source         = $Sub
         count          = $items.Count
         papers         = $papers.Count
         papersWithPdf  = $paperPdfs.Count

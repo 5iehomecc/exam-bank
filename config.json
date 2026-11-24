@@ -1,6 +1,6 @@
 {
-    "_说明":  "题库路径配置。vault = Obsidian 库根目录（可写相对路径，相对本程序目录）；sub = 库内存放试卷解析的子文件夹；port = 端口；idleExit = 无心跳多少秒后自动退出。",
-    "vault":  "D:\\【Knowledge Notes】",
+    "_说明": "题库路径配置。vault = Obsidian 库根目录，可写相对本程序目录的路径（.. 表示程序目录的上一级）；sub = 库内存放本应用与题库的子文件夹名；port = 端口；idleExit = 无心跳多少秒后自动退出。",
+    "vault":  "..",
     "sub":  "12-试卷解析",
     "port":  8787,
     "idleExit":  300

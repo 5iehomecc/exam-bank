@@ -1,7 +1,7 @@
-# 试卷题库（v2.7.1）
+# 试卷题库（v2.8.0）
 
-本地只读的初中试卷习题库。数据来自 `D:\【Knowledge Notes】\12-试卷解析` 下已拆分的独立试题 md，
-**不改动、不移动任何源文件**。
+本地只读的习题试卷库，覆盖小学、中学（初中 / 高中）等学段。数据来自本应用目录下
+`试题题库\` 中已拆分的独立试题 md，**不改动、不移动任何源文件**。
 
 整个应用跑在 **Windows 自带的 PowerShell 5.1** 上，**不需要安装 Python，也不需要任何第三方依赖**：
 索引构建和本地服务都是 PowerShell 脚本。
@@ -50,20 +50,20 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
 | 方式 | 怎么做 | 适合谁 |
 |---|---|---|
 | 启动时换（最简单） | 双击 `启动题库.bat`，在提示处按 **N**，就会弹框重新选 | 换库、库搬了位置 |
-| 手填配置 | 改 `config.json`：`vault` 填库根目录，`sub` 填那个文件夹名（原名） | 想批量搭多份环境 |
+| 手填配置 | 改 `config.json`：`vault` 填库根目录（可相对本程序目录），`sub` 填那个文件夹名（原名） | 想批量搭多份环境 |
 | 自动探测 | 没有 config 时：读 `%APPDATA%\obsidian\obsidian.json` 里登记的库，<br>先找名字带「试卷解析」的子目录，找不到再找「里面有 `*-Q*.md`」的子目录，<br>找到就问一句「用它吗」 | 分享给别人的第一落点 |
 
 说明几点：
 
 - 选中文件夹后程序会自动拆成 `vault`（父目录）+ `sub`（文件夹原名）写进 config，
-  页面头部会显示这个绝对路径，点一下可复制，方便确认到底读的是哪个库。
-- `vault` 也支持手填**相对路径**（相对本程序目录），例如程序放在库内 `12-试卷解析\试卷题库` 时写
-  `"vault": "..\.."`，整个库搬到哪里都不用改。
+  页面头部会显示本次实际读取的路径，点一下可复制，方便确认到底读的是哪个库。
+- `vault` 支持手填**相对路径**（相对本程序目录）：程序在库根下一层时写 `"vault": ".."`，
+  下两层写 `"vault": "..\.."`；这样整个库搬到哪里都不用改，也不会把本机盘符 / 用户目录带进仓库。
 - 选了取消：已有可用配置就沿用上次的（只提示一句，不再追问）；第一次用且没配置则提示无法启动并退出。
 - `port` / `idleExit`：起始端口、无心跳多少秒后自动退出，可省略（默认 8787 / 300）。
 - 手改 config 写错（指向没有 `*-Q*.md` 的文件夹）时，启动会直接拒绝并让你重新选，不会带着空库跑。
 - 给别人用：整个文件夹发过去或推到 GitHub，对方解压后双击 `启动题库.bat`，第一次会自己弹框让选题库层；
-  自己的 `config.json` 不要提交（`.gitignore` 已忽略），里面是私人路径。
+  `config.json` 用相对路径、不含本机绝对路径，可随仓库一起入库。
 
 ## 文件说明
 
@@ -73,9 +73,9 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
 | `CHANGELOG.md` | 版本变更记录 |
 | `LICENSE` | MIT 许可 |
 | `.gitattributes` | 换行约定：`.bat` 强制 CRLF（保证 clone 下来能直接双击）、前端与 JSON 用 LF |
-| `config.json` | **题库路径配置**（vault / sub / port / idleExit），换库或分享时只改这里 |
-| `config.example.json` | 配置模板，给别人的参考；不发自己的 `config.json` 就不会带上私人路径 |
-| `.gitignore` | 忽略 `config.json`、`questions.json`（前者含私人路径，后者是可再生的索引） |
+| `config.json` | **题库路径配置**（vault / sub / port / idleExit）；vault 用相对程序目录的路径，不含本机绝对路径 |
+| `config.example.json` | 配置模板，给别人的参考 |
+| `.gitignore` | 忽略 `__pycache__/`、`*.pyc` 与本地 `*.bak-*` 备份；`questions.json` 是可再生的索引产物 |
 | `启动题库.bat` | 唯一的入口 bat：启动服务；首次/换库时在里面选题库文件夹，关页面自动停 |
 | `serve.ps1` | 本地只读服务：启动引导（选择题库文件夹、确认上次路径）、页面、`/api/questions`、`/api/meta`（版本/库名/路径）、`/api/ping`（心跳）、`/vault/`（只开放题库那一层）、`/assets/` |
 | `lib.ps1` | 索引核心逻辑 + 配置读写 + 文件夹选择框：扫描试题 md 的 frontmatter，推导年级/学科/题型，解析知识点体系文件，生成 `questions.json` |
@@ -95,6 +95,8 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\serve.ps1
   状态会记住，适合专注看一道题。再点一次（或再按 `Ctrl+B`）恢复。
 - **中栏**：题目卡片。搜索命中的关键词会高亮，卡片左侧 ★ 可收藏到选题夹。
 - **右栏**：完整题干、配图、解析。解析默认折叠，点一下展开，也可一键全展开。
+- **配图悬浮窗**：单击右栏配图弹出独立悬浮窗，可拖动标题栏移动、拖右下角改尺寸、以图片中心为锚滚轮缩放（25%–600%），多图并存并自动错开；主页面的题干与解答始终保持可见，双击复位、✕ 或 Esc 关闭。
+- **原题 / 答案 PDF**：题详情头部按卷挂「原题 PDF / 答案 PDF」按钮，点击在题目上方内嵌展开（iframe），原题版与答案版可标签切换，也可「新窗口打开」兜底；左栏「仅看有原题 PDF」可筛出带卷内 PDF 的试卷。
 - **选题夹**：「只看收藏」筛出收藏题，「导出 MD」把这批题连同解析导出成一份 Markdown。
 - **色彩方案**：头部右侧的配色按钮，可在「青瓷 / 纸墨 / 纯白」之间切换（默认青瓷），选择会记在本机浏览器里；
   想直接指定可用 `?theme=celadon|paper|white`。
@@ -111,7 +113,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\build-index.ps1
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build-index.ps1 -Version
 ```
 
-当前索引规模：2104 题 / 88 套试卷 / 125 个知识点，跳过 0；`questions.json` 约 4.6 MB。
+当前索引规模：2490 题 / 102 套试卷 / 127 个知识点，跳过 0；`questions.json` 约 5.5 MB。
 
 ## 已知情况
 

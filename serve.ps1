@@ -223,7 +223,7 @@ if (-not $needBuild) {
         $sm = [regex]::Match($head, '"source":"([^"]*)"')
         if ($sm.Success) {
             $idxSrc = $sm.Groups[1].Value.Replace('\\', '\').TrimEnd('\')
-            if ($idxSrc -and ($idxSrc -ne $SubAbs)) {
+            if ($idxSrc -and ($idxSrc -ne $Sub)) {
                 Write-Host ('[i] 现有索引是别的题库建的（' + $idxSrc + '），按新路径重建')
                 $needBuild = $true
             }

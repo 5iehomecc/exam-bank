@@ -1,2 +1,9 @@
 # 早期 Python 版留档，与当前 PowerShell 版无关
 旧版-python（已停用）/
+
+# Python 缓存
+__pycache__/
+*.pyc
+
+# 脚本本地备份（可按版本回滚，不入库）
+*.bak-*
