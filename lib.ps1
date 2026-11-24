@@ -287,7 +287,7 @@ function Get-QBPaperFromSource {
 
 function Get-QBKnowledgeTree {
     param([string]$Vault, [string]$Sub)
-    $base = Join-Path $Vault (Join-Path $Sub '待解析')
+    $base = Join-Path $Vault (Join-Path $Sub '试题题库\待解析')
     $tree = @{}
     if (-not (Test-Path -LiteralPath $base)) { return $tree }
     $enc = New-Object Text.UTF8Encoding($false)
@@ -348,7 +348,7 @@ function New-QBIndex {
     $sw = [Diagnostics.Stopwatch]::StartNew()
 
     $files = Get-ChildItem -LiteralPath $rootFull -Recurse -File -Force |
-             Where-Object { $_.Name -match '-Q\d+\.md$' -and $_.DirectoryName -notmatch '\\\.' -and $_.DirectoryName -notmatch '\\试卷题库\\' } |
+             Where-Object { $_.Name -match '-Q\d+\.md$' -and $_.DirectoryName -notmatch '\\\.' } |
              Sort-Object FullName
 
     foreach ($f in $files) {
@@ -528,7 +528,7 @@ function Get-QBNewestMd {
     $newest = [datetime]::MinValue
     if (-not (Test-Path -LiteralPath $root)) { return $newest }
     Get-ChildItem -LiteralPath $root -Recurse -File -Force -Filter '*-Q*.md' -ErrorAction SilentlyContinue |
-        Where-Object { $_.Name -match '-Q\d+\.md$' -and $_.DirectoryName -notmatch '\\\.' -and $_.DirectoryName -notmatch '\\试卷题库\\' } |
+        Where-Object { $_.Name -match '-Q\d+\.md$' -and $_.DirectoryName -notmatch '\\\.' } |
         ForEach-Object { if ($_.LastWriteTime -gt $newest) { $newest = $_.LastWriteTime } }
     return $newest
 }
