@@ -268,6 +268,13 @@ mark{background:var(--mark-bg);color:var(--mark-txt);border-radius:3px;padding:0
 .placeholder{color:var(--dim2);display:grid;place-items:center;height:100%;text-align:center;font-size:13px;line-height:2}
 .md{font-size:14px;line-height:1.85;color:var(--txt-2);word-break:break-word}
 .md img{max-width:100% !important;height:auto;border-radius:8px;border:1px solid var(--line);background:#fff;margin:10px 0;display:block;cursor:zoom-in}
+/* 原题 PDF 内嵌面板 */
+.pdf-panel{margin:0 0 14px;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--panel2)}
+.pdf-bar{display:flex;align-items:center;gap:8px;padding:7px 10px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.pdf-tabs{display:flex;gap:6px;flex:1;flex-wrap:wrap}
+.pdf-tab{border:1px solid var(--line);background:var(--input-bg);color:var(--txt-3);border-radius:6px;padding:2px 9px;font-size:11.5px;cursor:pointer}
+.pdf-tab.on{border-color:var(--accent);background:var(--accent-soft);color:var(--accent-txt)}
+.pdf-frame{width:100%;height:52vh;border:0;background:#fff;display:block}
 .md h1,.md h2,.md h3{font-size:15px;margin:14px 0 8px;color:var(--txt-strong)}
 .md p{margin:8px 0}
 .md ul,.md ol{margin:8px 0 8px 18px}
@@ -348,6 +355,7 @@ details.ans[open] summary::before{transform:rotate(90deg)}
         <button class="chip" id="favClear">清空</button>
       </div></div>
     <div class="facet"><h3>试卷来源 <span id="c-paper"></span></h3>
+      <div class="chips" style="margin-bottom:7px"><button class="chip" id="favPdf">仅看有原题 PDF</button></div>
       <select class="select" id="f-paper"><option value="">全部试卷</option></select></div>
     <div class="facet"><h3>知识点树 <span id="c-kp"></span></h3>
       <input class="kpin" id="kpSearch" placeholder="在知识点树中搜索…" autocomplete="off">
@@ -373,7 +381,7 @@ details.ans[open] summary::before{transform:rotate(90deg)}
 </main>
 
 <script>
-const S = { grade:new Set(), subject:new Set(), type:new Set(), volume:new Set(), kp:new Set(), paper:"", q:"", kpQ:"", sort:"default", page:1, size:40, favOnly:false };
+const S = { grade:new Set(), subject:new Set(), type:new Set(), volume:new Set(), kp:new Set(), paper:"", q:"", kpQ:"", sort:"default", page:1, size:40, favOnly:false, onlyPdf:false };
 let DATA = null, ITEMS = [], VIEW = [], SEL = null, META = null;
 const FAV_KEY = "qb.fav";
 let FAV = new Set();
@@ -645,6 +653,7 @@ document.addEventListener("click", e => {
 });
 $("#kpSearch").addEventListener("input", e => { S.kpQ = e.target.value.trim().toLowerCase(); renderKpTree(); });
 $("#favOnly").addEventListener("click", () => { S.favOnly = !S.favOnly; S.page = 1; renderFav(); apply(); });
+$("#favPdf").addEventListener("click", () => { S.onlyPdf = !S.onlyPdf; S.page = 1; $("#favPdf").classList.toggle("on", S.onlyPdf); apply(); });
 $("#favExport").addEventListener("click", exportFav);
 $("#favClear").addEventListener("click", () => {
   if(!FAV.size) return;
@@ -662,6 +671,7 @@ $("#q").addEventListener("input", e => {
 
 function match(x){
   if(S.favOnly && !FAV.has(x.id)) return false;
+  if(S.onlyPdf && !(DATA.paperPdfs && DATA.paperPdfs[x.paper])) return false;
   if(S.grade.size && !S.grade.has(x.grade)) return false;
   if(S.subject.size && !S.subject.has(x.subject)) return false;
   if(S.type.size && !S.type.has(x.type)) return false;
@@ -967,6 +977,9 @@ async function openDetail(id, card){
   if(card) card.classList.add("sel");
   const item = ITEMS.find(x => x.id === id);
   if(!item) return;
+  const dir = item.rel.split("/").slice(0,-1).join("/");
+  const pdfs = (DATA.paperPdfs && DATA.paperPdfs[item.paper]) || [];
+  const pdfBtns = pdfs.map((p,i) => `<button class="btn" data-pdf="${i}">${p.kind==='answer'?'答案 PDF':'原题 PDF'}</button>`).join("");
   const detail = $("#detail");
   detail.classList.add("show");
   detail.innerHTML = `<div class="detail-head">
@@ -977,10 +990,10 @@ async function openDetail(id, card){
         <button class="btn" id="toggleAll">展开/收起解析</button>
         <button class="btn" id="copyId">复制 ID</button>
         <button class="btn" id="openObs">在 Obsidian 打开</button>
+        ${pdfBtns}
       </div>
     </div>
     <div class="detail-body"><div class="md" id="md">正在加载…</div></div>`;
-  const dir = item.rel.split("/").slice(0,-1).join("/");
   try{
     const r = await fetch(vaultURL(item.rel));
     if(!r.ok) throw new Error("HTTP " + r.status);
@@ -1014,6 +1027,39 @@ async function openDetail(id, card){
     const file = encodeURIComponent(item.rel.replace(/\.md$/,""));
     location.href = `obsidian://open?vault=${vaultName}&file=${file}`;
   });
+
+  // 原题 / 答案 PDF 内嵌面板：标签切换、iframe 内嵌、新窗口兜底、可收起
+  let pdfPanel = null;
+  const pdfUrl = i => vaultURL((dir ? dir + "/" : "") + pdfs[i].file);
+  const closePdf = () => {
+    if(!pdfPanel) return;
+    const frame = pdfPanel.querySelector("#pdfFrame"); if(frame) frame.src = "about:blank";
+    pdfPanel.style.display = "none";
+  };
+  const showPdf = i => {
+    if(!pdfs.length) return;
+    if(!pdfPanel){
+      pdfPanel = document.createElement("div");
+      pdfPanel.className = "pdf-panel";
+      pdfPanel.innerHTML = `
+        <div class="pdf-bar">
+          <div class="pdf-tabs">${pdfs.map((p,idx)=>`<button class="pdf-tab" data-i="${idx}">${p.kind==='answer'?'答案':'原题'}</button>`).join("")}</div>
+          <a class="btn" id="pdfOpen" target="_blank" rel="noopener">新窗口打开</a>
+          <button class="btn" id="pdfClose">收起</button>
+        </div>
+        <iframe class="pdf-frame" id="pdfFrame" title="试卷 PDF"></iframe>`;
+      const body = document.querySelector(".detail-body");
+      body.insertBefore(pdfPanel, body.firstChild);
+      pdfPanel.querySelectorAll(".pdf-tab").forEach(t => t.addEventListener("click", () => showPdf(+t.dataset.i)));
+      pdfPanel.querySelector("#pdfClose").addEventListener("click", closePdf);
+    }
+    const url = pdfUrl(i);
+    pdfPanel.querySelector("#pdfFrame").src = url;
+    pdfPanel.querySelector("#pdfOpen").href = url;
+    pdfPanel.querySelectorAll(".pdf-tab").forEach(t => t.classList.toggle("on", +t.dataset.i === i));
+    pdfPanel.style.display = "";
+  };
+  detail.querySelectorAll("[data-pdf]").forEach(b => b.addEventListener("click", () => showPdf(+b.dataset.pdf)));
 }
 </script>
 </body>

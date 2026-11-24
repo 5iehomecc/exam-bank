@@ -344,6 +344,7 @@ function New-QBIndex {
 
     $items = New-Object System.Collections.Generic.List[object]
     $skipped = 0
+    $paperDirs = @{}
     $sw = [Diagnostics.Stopwatch]::StartNew()
 
     $files = Get-ChildItem -LiteralPath $rootFull -Recurse -File -Force |
@@ -368,6 +369,7 @@ function New-QBIndex {
         $tags = @(Get-QBList $fm['tags'])
 
         $paper = $f.Directory.Name
+        if (-not $paperDirs.ContainsKey($paper)) { $paperDirs[$paper] = $f.DirectoryName }
         $relDir = $f.Directory.FullName.Substring($rootFull.Length).TrimStart('\')
         $category = ''
         if ($relDir) { $category = ($relDir -split '\\')[0] }
@@ -429,6 +431,24 @@ function New-QBIndex {
     }
     $items.Sort($comparison)
 
+    # 扫描每个拆题卷目录里的 PDF：仅 A 侧题目目录（B 镜像在文件扫描阶段已排除），
+    # 不纳入散落在学科根目录、尚未拆题的 PDF。文件名含答案/解析/详解判为答案版。
+    $paperPdfs = [ordered]@{}
+    foreach ($paperName in $paperDirs.Keys) {
+        $dirFull = $paperDirs[$paperName]
+        if (-not (Test-Path -LiteralPath $dirFull -PathType Container)) { continue }
+        $pdfs = @(Get-ChildItem -LiteralPath $dirFull -File -Force -Filter '*.pdf' | Sort-Object Name)
+        if ($pdfs.Count -eq 0) { continue }
+        $list = @()
+        foreach ($p in $pdfs) {
+            # 「(含答案)」仍是原题卷，不算答案版；答案版/详解/解析版或文件名以答案收尾才归类 answer
+            $isAnswer = ($p.Name -notmatch '含答案') -and ($p.Name -match '答案版|详解|解析版|answer|答案[-_.）)]|答案$')
+            $kind = if ($isAnswer) { 'answer' } else { 'source' }
+            $list += [pscustomobject]@{ file = $p.Name; kind = $kind }
+        }
+        $paperPdfs[$paperName] = $list
+    }
+
     $kpCount = @{}
     $kpSubj = @{}
     $papers = @{}
@@ -482,6 +502,7 @@ function New-QBIndex {
         source         = $rootFull
         count          = $items.Count
         papers         = $papers.Count
+        papersWithPdf  = $paperPdfs.Count
         knowledgeCount = $kpCount.Count
         skipped        = $skipped
         elapsedMs      = $elapsedMs
@@ -492,6 +513,7 @@ function New-QBIndex {
         knowledgeCounts  = $kpCount
         knowledgeSubjects = $kpSubj
         kpTree           = $kpTree
+        paperPdfs        = $paperPdfs
         items            = $items
     }
 
